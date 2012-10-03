@@ -46,6 +46,7 @@ Existing Features
 ### IndexController: localhost/index.phtml
 
 This will be for users to log into their account and read about the basics of the site
+
 !!! Logging in is just a blank form being submitted and navigating straight to the dashboard !!!
 
 ### Default ProjectController: localhost/projects
