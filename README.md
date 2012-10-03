@@ -21,14 +21,13 @@ The following people are contributing to the overall site design
 Architecture
 ------------
 
-This project is built under the Zend Framework, utilizing these technologies:
+This project is built under the [Zend Framework](http://framework.zend.com/) v1.12.0, utilizing these technologies:
 
-* PHP
-* HTML
-* CSS
-* MySQL
-* Javascript
-	*jQuery UI
+* [PHP](http://www.php.net/) 5.3.14
+* [HTML5](http://en.wikipedia.org/wiki/HTML5)
+* [CSS](http://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+* [MySQL](http://mysql.com)
+* [Javascript](http://en.wikipedia.org/wiki/Javascript): [jQuery UI](http://jqueryui.com/)
 
 Supported Browsers
 ------------
