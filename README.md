@@ -27,6 +27,8 @@ This project is built under the Zend Framework, utilizing these technologies:
 * HTML
 * CSS
 * MySQL
+* Javascript
+	*jQuery UI
 
 Supported Browsers
 ------------
