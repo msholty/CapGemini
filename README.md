@@ -31,3 +31,20 @@ This project is built under the Zend Framework, utilizing these technologies:
 
 Existing Features
 ------------
+
+### /index.phtml (IndexController)
+
+
+
+In Development
+------------
+
+* Enhanced data model
+* Log in/out
+* Add budget
+
+Down the Road
+------------
+
+* Graphical representation of financials, budgets and timelines
+*
