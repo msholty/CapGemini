@@ -32,9 +32,18 @@ This project is built under the Zend Framework, utilizing these technologies:
 Existing Features
 ------------
 
-### /index.phtml (IndexController)
+### IndexController: localhost/index.phtml
 
+This will be for users to log into their account and read about the basics of the site
+!!! Logging in is just a blank form being submitted and navigating straight to the dashboard !!!
 
+### Default ProjectController: localhost/projects
+
+View all the projects that are visible to the user
+
+### PeopleController: localhost/people
+
+View all people on the account
 
 In Development
 ------------
@@ -47,4 +56,6 @@ Down the Road
 ------------
 
 * Graphical representation of financials, budgets and timelines
-*
+* Financials page implementation
+* Opportunities page implementation
+* QA page implementation
