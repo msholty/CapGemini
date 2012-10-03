@@ -1,0 +1,17 @@
+<div class="body-container">
+    <p><?php //echo $result->num_rows ?> Active</p>
+    <p>List of projects:</p>
+    <ul id="projectList">
+    <?php
+        /*while($project = $result->fetch_object()) {
+            echo "<li><a href=\"./View/?id=" . $project->id . "\">". $project->id . ": " . $project->name . "</a></li>";
+        }*/
+    ?>
+    </ul>
+    <form>
+        <input type="submit" value="New Project" formaction="New"/>
+        <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/right_arrow_large.gif') ?>" class="navarrow" />
+        <label class="pagelabel">Page 1 of 1</label>
+        <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/left_arrow_large.gif') ?>" class="navarrow" />
+    </form>
+</div>

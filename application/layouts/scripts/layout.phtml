@@ -1,0 +1,16 @@
+<?php echo $this->doctype(); ?>
+<?php echo $this->render('_pageHeader.phtml'); ?>
+<html>
+    <body>
+        <div id="pageContainer">
+            <?php echo $this->render('_header.phtml'); ?>
+            <div id="pageContainerInner">
+                <div id="pageContent">
+                    <?php echo $this->layout()->content; ?>
+                </div>
+            </div>
+
+        </div>
+        <?php echo $this->render('_footer.phtml'); ?>
+    </body>
+</html>
