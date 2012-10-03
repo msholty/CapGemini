@@ -28,6 +28,15 @@ This project is built under the Zend Framework, utilizing these technologies:
 * CSS
 * MySQL
 
+Supported Browsers
+------------
+
+We plan to support these browsers
+* Firefox (Latest)
+* Chrome
+* Safari (Mac Latest)
+* iOS Safari (iPad)
+
 
 Existing Features
 ------------
@@ -51,6 +60,7 @@ In Development
 * Enhanced data model
 * Log in/out
 * Add budget
+* Github wiki for project
 
 Down the Road
 ------------
