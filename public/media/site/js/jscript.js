@@ -6,17 +6,19 @@ var myWindow;
 function lookup(w,h,textbox_id,type) {
 	var left = (screen.width/2)-(w/2);
 	var top = (screen.height/2)-(h/2);
-	localStorage.textbox_id = textbox_id;
 	//create the window object
-	myWindow = window.open('http://localhost/Lookup/'+type+'/','','width='+w+',height='+h+', top='+top+', left='+left);
+	myWindow = window.open('/Lookup/'+type+'/','','width='+w+',height='+h+', top='+top+', left='+left);
 	myWindow.name = textbox_id;
 	myWindow.opener.name = "opener";
 	//focus the window for the user to select something
 	myWindow.focus();
 }
 
-function sendSelection(id, name, fullname) {
+/* @param id - the id of the person (according to database)
+ * @param fullname - full name of the person to fill into the textbox i.e. "Sholty, Michael"
+ */
+function sendSelection(id, fullname) {
 	window.opener.document.getElementById(window.name).value = fullname;
-	window.opener.document.getElementById("hidden_"+window.name).value = id;
+	window.opener.document.getElementById(window.name+"_hidden").value = id;
 	window.close();
 }

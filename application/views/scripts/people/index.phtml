@@ -1,4 +1,17 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>People</b> and script/action name <b>index</b></p>
+<div class="body-container">
+    <p><?//php echo $result->num_rows ?> Active</p>
+    <p>List of people:</p>
+    <ul id="projectList">
+    <?php
+        /*while($people = $result->fetch_object()) {
+            echo "<li><a href=\"./View/?id=" . $people->id . "\">". $people->lastName . ", " . $people->firstName . "</a></li>";
+        }*/
+    ?>
+    </ul>
+    <a href="/people/new/" class="pill-btn black-btn">New Person</a>
+    <form method="post">
+        <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/right_arrow_large.gif') ?>" class="navarrow" />
+        <label class="pagelabel">Page 1 of 1</label>
+        <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/left_arrow_large.gif') ?>" class="navarrow" />
+    </form>
 </div>

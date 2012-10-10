@@ -1,0 +1,27 @@
+<div class="body-container">
+    <h1><?php echo $this->project->name?></h1>
+    <a href="/projects/" class="pill-btn black-btn">Back</a>
+    <h2>General Information</h2>
+    <form>
+        <label name="Id">Id: <?php echo $this->project->id ?></label><br>
+        Code: <?php echo $this->project->code ?><br>
+        Accountable: <?php echo $this->project->accountable ?><br>
+        Responsible: <?php echo $this->project->responsible ?><br>
+        ETC Keeper: <?php  echo $this->project->etcKeeper ?><br>
+        Expense Approver: <?php echo $this->project->expenseApprover ?><br><br>
+        <a href="<?php echo $this->url(
+            array(
+                    'controller' => 'projects',
+                    'action' => 'edit',
+                    'id' => $this->id
+            )
+        );?>" class="pill-btn black-btn">Edit</a>
+        <a href="<?php echo $this->url(
+            array(
+                    'controller' => 'projects',
+                    'action' => 'add-budget',
+                    'id' => $this->id
+            )
+        );?>" class="pill-btn black-btn">Add Budget</a>
+    </form>
+</div>

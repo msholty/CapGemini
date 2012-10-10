@@ -9,13 +9,21 @@
       <controllersDirectory>
         <controllerFile controllerName="Index">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
         <controllerFile controllerName="Projects">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+          <actionMethod actionName="view"/>
+          <actionMethod actionName="edit"/>
+          <actionMethod actionName="addBudget"/>
         </controllerFile>
         <controllerFile controllerName="People">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+          <actionMethod actionName="view"/>
+          <actionMethod actionName="edit"/>
         </controllerFile>
         <controllerFile controllerName="Financials">
           <actionMethod actionName="index"/>
@@ -27,16 +35,25 @@
           <actionMethod actionName="index"/>
         </controllerFile>
       </controllersDirectory>
-      <formsDirectory enabled="false"/>
+      <formsDirectory>
+        <formFile formName="Person"/>
+        <formFile formName="Project"/>
+        <formFile formName="AddBudget"/>
+      </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
           <layoutScriptFile layoutName="layout"/>
         </layoutScriptsDirectory>
       </layoutsDirectory>
       <modelsDirectory>
-        <modelFile modelName="Project"/>
-        <modelFile modelName="People"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Person"/>
+          <dbTableFile dbTableName="Project"/>
+        </dbTableDirectory>
         <modelFile modelName="Person"/>
+        <modelFile modelName="PersonMapper"/>
+        <modelFile modelName="ProjectMapper"/>
+        <modelFile modelName="Project"/>
       </modelsDirectory>
       <modulesDirectory>
         <moduleDirectory moduleName="projects">
@@ -90,6 +107,33 @@
           <viewControllerScriptsDirectory forControllerName="Opportunities">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="People">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="New"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="People">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="People">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="addBudget"/>
+          </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
@@ -126,12 +170,20 @@
         <testApplicationControllerDirectory>
           <testApplicationControllerFile forControllerName="Index">
             <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
           </testApplicationControllerFile>
           <testApplicationControllerFile forControllerName="Projects">
             <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+            <testApplicationActionMethod forActionName="view"/>
+            <testApplicationActionMethod forActionName="edit"/>
+            <testApplicationActionMethod forActionName="addBudget"/>
           </testApplicationControllerFile>
           <testApplicationControllerFile forControllerName="People">
             <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+            <testApplicationActionMethod forActionName="view"/>
+            <testApplicationActionMethod forActionName="edit"/>
           </testApplicationControllerFile>
           <testApplicationControllerFile forControllerName="Financials">
             <testApplicationActionMethod forActionName="index"/>
