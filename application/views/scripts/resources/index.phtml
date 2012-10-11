@@ -1,14 +1,10 @@
 <div class="body-container">
-    <p><?//php echo $result->num_rows ?> Active</p>
-    <p>List of people:</p>
+    <p><?php echo $this->results->count() ?> Active</p>
+    <p>List of resources:</p>
     <ul id="projectList">
-    <?php
-        /*while($people = $result->fetch_object()) {
-            echo "<li><a href=\"./View/?id=" . $people->id . "\">". $people->lastName . ", " . $people->firstName . "</a></li>";
-        }*/
-    ?>
+        <?php echo $this->partialLoop('resources/partials/resourceList.phtml', $this->results) ?>
     </ul>
-    <a href="/people/new/" class="pill-btn black-btn">New Person</a>
+    <a href="/resources/new/" class="pill-btn black-btn">New Resource</a>
     <form method="post">
         <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/right_arrow_large.gif') ?>" class="navarrow" />
         <label class="pagelabel">Page 1 of 1</label>

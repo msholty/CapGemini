@@ -1,6 +1,6 @@
 <?php
 
-class Application_Form_Person extends Zend_Form
+class Application_Form_Resource extends Zend_Form
 {
     /* Options can contain
      * $options['submitLabel'] -> label for the button
@@ -12,7 +12,7 @@ class Application_Form_Person extends Zend_Form
         $this->setAction($options['action']) //Action is a passed in option
              ->setMethod('post'); //Form is a POST form
 
-        // Person First Name field
+        // Resource First Name field
         $firstName = new Zend_Form_Element_Text(
                 'firstName',
                 array(
@@ -20,7 +20,7 @@ class Application_Form_Person extends Zend_Form
                         'placeholder' => 'First Name'
                 )
         );
-        // Person Last Name field
+        // Resource Last Name field
         $lastName = new Zend_Form_Element_Text(
                 'lastName',
                 array(
@@ -28,7 +28,7 @@ class Application_Form_Person extends Zend_Form
                         'placeholder' => 'Last Name'
                 )
         );
-        // Person Last Name field
+        // Resource Last Name field
         $email = new Zend_Form_Element_Text(
                 'lastName',
                 array(
@@ -36,7 +36,7 @@ class Application_Form_Person extends Zend_Form
                         'placeholder' => 'Last Name'
                 )
         );
-        // Person Phone Number field (text)
+        // Resource Phone Number field (text)
         $phoneNumber = new Zend_Form_Element_Text(
                 'phoneNumber',
                 array(

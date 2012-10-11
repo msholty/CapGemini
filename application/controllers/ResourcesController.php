@@ -1,6 +1,6 @@
 <?php
 
-class PeopleController extends Zend_Controller_Action
+class ResourcesController extends Zend_Controller_Action
 {
 
     public function init()
@@ -10,13 +10,18 @@ class PeopleController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        // Create mapper object
+        $resource_mapper = new Application_Model_ResourceMapper();
+        // Query for all resources, store in variable called $results
+        $results = $resource_mapper->getResources();
+        // Store the results in the view so it can render them with partials
+        $this->view->results = $results;
     }
 
     public function newAction()
     {
         // action body
-        $form = new Application_Form_Person(
+        $form = new Application_Form_Resource(
             array(
                 'action' => '/people/new/',
                 'submitLabel' => 'Save'
@@ -28,16 +33,16 @@ class PeopleController extends Zend_Controller_Action
             $formData = $this->_request->getPost();
             if ($form->isValid($formData)) {
                 //Create a new project with post data
-                $person = new Application_Model_Person();
-                $person->firstName = $form->getValue('firstName');
-                $person->lastName = $form->getValue('lastName');
-                $person->phoneNumber = $form->getValue('phoneNumber');
-                $person->email = $form->getValue('email');
-                $person->dateCreated = date('Y-m-d H:i:s');
+                $Resource = new Application_Model_Resource();
+                $Resource->firstName = $form->getValue('firstName');
+                $Resource->lastName = $form->getValue('lastName');
+                $Resource->phoneNumber = $form->getValue('phoneNumber');
+                $Resource->email = $form->getValue('email');
+                $Resource->dateCreated = date('Y-m-d H:i:s');
 
                 //Insert into database
-                $person_mapper = new Application_Model_PersonMapper();
-                $person_mapper->save($person);
+                $Resource_mapper = new Application_Model_ResourceMapper();
+                $Resource_mapper->save($Resource);
 
                 //Redirect to project's view screen /people/view/:id
                 $this->_redirect('/people/view/id/'.$id);
@@ -53,7 +58,7 @@ class PeopleController extends Zend_Controller_Action
         $id = $this->getRequest()->getParam('id');
         // Check to see if they specified id in the url and its a valid id
         if($id == null || !intval($id)) {
-            // Redirect because to view a person, they have to specify one in the url
+            // Redirect because to view a Resource, they have to specify one in the url
             $this->_redirect('/people/');
             exit();
         }

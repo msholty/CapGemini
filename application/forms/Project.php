@@ -5,66 +5,44 @@ class Application_Form_Project extends Zend_Form
     public function __construct($options = null) {
         parent::__construct($options);
 
-        $this->setAction($options['action']) //Action is a passed in option
-             ->setMethod('post'); //Form is a POST form
+        $this->setAction($options['action'])    //Action is a passed in option
+             ->setMethod('post')                //Form is a POST form
+        /*     ->setDecorators(array(
+                array('ViewScript', array('viewScript' => 'project.phtml'))
+        ))*/;
 
         // Project name field
-        $name = new Zend_Form_Element_Text(
-            'name',
-            array(
-                'required' => true,
-                'placeholder' => 'Project Name'
-            )
-        );
+        $name = new Zend_Form_Element_Text('name');
+        $name->setRequired(true);
+
         // Project Code field
-        $code = new Zend_Form_Element_Text(
-            'code',
-            array(
-                'required' => false,
-                'placeholder' => 'Project Code'
-            )
-        );
+        $code = new Zend_Form_Element_Text('code');
+        $code->setRequired(true);
+
         // Project Accountable field (text)
-        $accountable = new Zend_Form_Element_Text(
-            'accountable',
-            array(
-                'required' => true,
-                'placeholder' => 'Accountable'
-            )
-        );
+        $accountable = new Zend_Form_Element_Text('accountable');
+        $accountable->setRequired(true);
+
         // Project Responsible field
-        $responsible = new Zend_Form_Element_Text(
-            'responsible',
-            array(
-                'required' => true,
-                'placeholder' => 'Responsible'
-            )
-        );
+        $responsible = new Zend_Form_Element_Text('responsible');
+        $responsible->setRequired(true);
+
         // Project ETC Keeper field
-        $etcKeeper = new Zend_Form_Element_Text(
-            'etcKeeper',
-            array(
-                'required' => true,
-                'placeholder' => 'ETC Keeper'
-            )
-        );
+        $etcKeeper = new Zend_Form_Element_Text('etcKeeper');
+        $etcKeeper->setRequired(true);
+
         // Project Expense Approver field
-        $expenseApprover = new Zend_Form_Element_Text(
-            'expenseApprover',
-            array(
-                'required' => true,
-                'placeholder' => 'Expense Approver'
-            )
-        );
+        $expenseApprover = new Zend_Form_Element_Text('etcKeeper');
+        $expenseApprover->setRequired(true);
+
         // Submit button
-        $submit = new Zend_Form_Element_Button(
-            'save',
-            array(
-                'name' => 'Save',
-                'type' => 'submit',
-                'class' => 'pill-btn black-btn'
-            )
-        );
+        $submit = new Zend_Form_Element_Button('save');
+        $submit->setAttribs(
+                array(
+                        'class' => 'pill-btn black-btn',
+                        'name' => 'Save',
+                        'type' => 'submit'
+                ));
 
         /**************** Hidden form fields ***************/
         // Project Accountable field (hidden)
@@ -104,19 +82,19 @@ class Application_Form_Project extends Zend_Form
 
         //Add all the elements to the form
         $this->addElements(
-            array(
-                $name,
-                $code,
-                $accountable,
-                $responsible,
-                $etcKeeper,
-                $expenseApprover,
-                $accountable_hidden,
-                $responsible_hidden,
-                $etcKeeper_hidden,
-                $expenseApprover_hidden,
-                $submit
-            )
+                array(
+                        $name,
+                        $code,
+                        $accountable,
+                        $responsible,
+                        $etcKeeper,
+                        $expenseApprover,
+                        $accountable_hidden,
+                        $responsible_hidden,
+                        $etcKeeper_hidden,
+                        $expenseApprover_hidden,
+                        $submit
+                )
         );
     }
 }

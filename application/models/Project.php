@@ -6,11 +6,13 @@ class Application_Model_Project
     private $id;
     private $name;
     private $code;
+    private $phase;
+    private $status;
     private $responsible;
     private $accountable;
-    private $etcKeeper;
-    private $expenseApprover;
-    private $dateCreated;
+    private $etc_keeper;
+    private $expense_approver;
+    private $date_created;
 
     //upon construction, map the values
     //from the $project_row if available
@@ -19,12 +21,14 @@ class Application_Model_Project
         if( !is_null($project_row) && $project_row instanceof Zend_Db_Table_Row ) {
             $this->id = $project_row->id;
             $this->name = $project_row->name;
-            $this->code= $project_row->code;
+            $this->code = $project_row->code;
+            $this->phase = $project_row->phase;
+            $this->status = $project_row->status;
             $this->responsible = $project_row->responsible;
             $this->accountable = $project_row->accountable;
-            $this->etcKeeper = $project_row->etcKeeper;
-            $this->expenseApprover = $project_row->expenseApprover;
-            $this->dateCreated = $project_row->dateCreated;
+            $this->etc_keeper = $project_row->etc_keeper;
+            $this->expense_approver = $project_row->expense_approver;
+            $this->date_created = $project_row->date_created;
         }
     }
     //magic function __set to set the

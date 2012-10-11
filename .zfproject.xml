@@ -19,7 +19,7 @@
           <actionMethod actionName="edit"/>
           <actionMethod actionName="addBudget"/>
         </controllerFile>
-        <controllerFile controllerName="People">
+        <controllerFile controllerName="Resources">
           <actionMethod actionName="index"/>
           <actionMethod actionName="new"/>
           <actionMethod actionName="view"/>
@@ -36,7 +36,7 @@
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
-        <formFile formName="Person"/>
+        <formFile formName="Resource"/>
         <formFile formName="Project"/>
         <formFile formName="AddBudget"/>
       </formsDirectory>
@@ -47,11 +47,11 @@
       </layoutsDirectory>
       <modelsDirectory>
         <dbTableDirectory>
-          <dbTableFile dbTableName="Person"/>
+          <dbTableFile dbTableName="Resource"/>
           <dbTableFile dbTableName="Project"/>
         </dbTableDirectory>
-        <modelFile modelName="Person"/>
-        <modelFile modelName="PersonMapper"/>
+        <modelFile modelName="Resource"/>
+        <modelFile modelName="ResourceMapper"/>
         <modelFile modelName="ProjectMapper"/>
         <modelFile modelName="Project"/>
       </modelsDirectory>
@@ -95,7 +95,7 @@
           <viewControllerScriptsDirectory forControllerName="Projects">
             <viewScriptFile forActionName="Index"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="People">
+          <viewControllerScriptsDirectory forControllerName="Resources">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Financials">
@@ -110,7 +110,7 @@
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="new"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="People">
+          <viewControllerScriptsDirectory forControllerName="Resources">
             <viewScriptFile forActionName="new"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Projects">
@@ -122,13 +122,13 @@
           <viewControllerScriptsDirectory forControllerName="Projects">
             <viewScriptFile forActionName="view"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="People">
+          <viewControllerScriptsDirectory forControllerName="Resources">
             <viewScriptFile forActionName="view"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Projects">
             <viewScriptFile forActionName="edit"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="People">
+          <viewControllerScriptsDirectory forControllerName="Resources">
             <viewScriptFile forActionName="edit"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Projects">
@@ -179,7 +179,7 @@
             <testApplicationActionMethod forActionName="edit"/>
             <testApplicationActionMethod forActionName="addBudget"/>
           </testApplicationControllerFile>
-          <testApplicationControllerFile forControllerName="People">
+          <testApplicationControllerFile forControllerName="Resources">
             <testApplicationActionMethod forActionName="index"/>
             <testApplicationActionMethod forActionName="new"/>
             <testApplicationActionMethod forActionName="view"/>

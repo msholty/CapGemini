@@ -1,5 +1,5 @@
 <?php
-class Application_Model_Person
+class Application_Model_Resource
 {
     //declare the Person's attributes
     private $id;

@@ -12,29 +12,31 @@ class Application_Model_ProjectMapper
 
     public function save(Application_Model_Project $project_object)
     {
-        //Create an associative array
-        //of the data you want to update
+        //Create an associative array of the data you want to update
         $data = array(
-            'name' => $project_object->name,
-            'code' => $project_object->code,
-            'accountable' => $project_object->accountable,
-            'responsible' => $project_object->responsible,
-            'etcKeeper' => $project_object->etcKeeper,
-            'expenseApprover' => $project_object->expenseApprover
+                'name' => $project_object->name,
+                'code' => $project_object->code,
+                'phase' => $project_object->phase,
+                'status' => $project_object->status,
+                'accountable' => $project_object->accountable,
+                'responsible' => $project_object->responsible,
+                'etc_keeper' => $project_object->etc_keeper,
+                'expense_approver' => $project_object->expense_approver
         );
 
         //Check if the Project object has an ID
         //if no, it means the Project is a new Project
         //if yes, then it means you're updating an old Project
         if( is_null($project_object->id) ) {
-            $data['dateCreated'] = date('Y-m-d H:i:s');
+            $data['date_created'] = date('Y-m-d H:i:s');
             $this->_db_table->insert($data);
-        } else {
+        }
+        else {
             $this->_db_table->update(
-                $data,
-                array( //where id = $project_object->id
-                    'id = ?' => $project_object->id
-                )
+                    $data,
+                    array(
+                            'id = ?' => $project_object->id
+                    )
             );
         }
     }

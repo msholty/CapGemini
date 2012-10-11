@@ -1,0 +1,35 @@
+<div class="NewProject">
+    <h1>Create New Project</h1>
+    <form action="<?php echo $this->form->getAction() ?>">
+        <fieldset>
+            <legend>General Information</legend>
+            Name: <input name="name" class="inputname" type="text" placeholder="Add Project Name" required/><br>
+            Code: <input name="code" class="code" type="text" placeholder="Project Code" required/><br>
+        </fieldset>
+        <!--<br><br>
+        <h2>More Information</h2>
+        <div class="more_info">
+            <div class="labels">
+                <label>Accountable:</label>
+                <label>Responsible:</label><br>
+                <label>ETC Keeper:</label>
+                <label>Expense Approver:</label>
+            </div>
+            <div class="inputs">
+                <input id="accountable" name="accountable" type="text" required>
+                <a href="javascript:void(0)" onclick="lookup(600,400, 'accountable', 'People');"><img src="../../../img/LookupIcon.gif" /></a>
+                <input id="responsible" name="responsible" type="text" required>
+                <a href="javascript:void(0)" onclick="lookup(600,400, 'responsible', 'People');"><img src="../../../img/LookupIcon.gif" /></a>
+                <input id="etcKeeper" name="etcKeeper" type="text" required>
+                <a href="javascript:void(0)" onclick="lookup(600,400, 'etcKeeper', 'People');"><img src="../../../img/LookupIcon.gif" /></a>
+                <input id="expenseApprover" name="expenseApprover" type="text" required>
+                <a href="javascript:void(0)" onclick="lookup(600,400, 'expenseApprover', 'People');"><img src="../../../img/LookupIcon.gif" /></a>
+                <input type="hidden" id="hidden_accountable" name="hidden_accountable" >
+                <input type="hidden" id="hidden_responsible" name="hidden_responsible" >
+                <input type="hidden" id="hidden_etcKeeper" name="hidden_etcKeeper" >
+                <input type="hidden" id="hidden_expenseApprover" name="hidden_expenseApprover" >
+            </div>
+        </div>-->
+        <input type="submit" name="submit" value="Save">
+    </form>
+</div>

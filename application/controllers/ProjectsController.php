@@ -150,15 +150,4 @@ class ProjectsController extends Zend_Controller_Action
         );
         $this->view->form = $form;
     }
-
-
 }
-
-
-
-
-
-
-
-
-
