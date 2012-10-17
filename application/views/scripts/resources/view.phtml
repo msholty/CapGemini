@@ -1,4 +1,10 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>People</b> and script/action name <b>view</b></p>
+<div class="body-container">
+	<h1><?php echo $this->resource->last_name . " " . $this->resource->first_name ?></h1><br>
+	<label>Id: </label> <?php echo $this->resource->id ?><br>
+	<label>Phone Number:</label> <?php echo $this->resource->phone_number ?><br>
+	<label>Email:</label> <?php echo $this->resource->email ?><br>
+	<label>Resource Type: </label> <?php echo $this->resource->resource_type ?><br>
+	<label>Title: <?php echo $this->resource->title ?></label><br>
+	<br>
+	<a href="/resources/edit/id/<?php echo $this->resource->id ?>" class="pill-btn black-btn">Edit</a>
 </div>

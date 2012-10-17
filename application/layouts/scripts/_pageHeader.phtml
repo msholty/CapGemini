@@ -15,10 +15,18 @@
     <title>CapGemini</title>
     <?php
     $this->headLink()
-        ->prependStylesheet(
-                $this->baseUrl(
-                        '/media/site/css/style.css'),
-                'screen')
+		->prependStylesheet(
+				$this->baseUrl(
+						'/media/shared/jquery-ui/css/custom-theme/jquery-ui-1.8.23.custom.css'
+				),
+				'screen'
+		)
+		->prependStylesheet(
+				$this->baseUrl(
+						'/media/site/css/style.css'
+				),
+				'screen'
+		)
         ->headLink(
                 array('rel' => 'icon',
                     'href' => $this->baseUrl('/media/site/img/content/favicon.ico')),

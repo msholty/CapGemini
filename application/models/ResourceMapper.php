@@ -15,10 +15,13 @@ class Application_Model_ResourceMapper
         //Create an associative array
         //of the data you want to update
         $data = array(
-                'firstName' => $resource_object->firstName,
-                'lastName' => $resource_object->lastName,
-                'phoneNumber' => $resource_object->phoneNumber,
-                'email' => $resource_object->email
+                'first_name' => $resource_object->first_name,
+        		'middle_name' => $resource_object->middle_name,
+                'last_name' => $resource_object->last_name,
+                'phone_number' => $resource_object->phone_number,
+                'email' => $resource_object->email,
+        		'resource_type' => $resource_object->resource_type,
+        		'title' => $resource_object->title
         );
         //Check if the person object has an ID
         //if no, it means the person is a new person
@@ -41,7 +44,7 @@ class Application_Model_ResourceMapper
         $result = $this->_db_table->find($id);
         //if not found, throw an exsception
         if( count($result) == 0 ) {
-            throw new Exception('Person not found');
+            throw new Exception('Resource not found');
         }
         //if found, get the result, and map it to the
         //corresponding Data Object

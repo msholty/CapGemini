@@ -23,8 +23,10 @@ html {
 	height: 100%;
 
 	font-size: 12px;
-	font-color:#3a4a54;
+	/*font-color:#3a4a54;*/
 	line-height:2em;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 body {
@@ -94,6 +96,7 @@ a:hover {
 .side-container {
 	padding: 10px 10px 30px 10px;
 	float: left;
+	/*left: 0px;*/
 	border: 2px solid #3a4a54;
 	background-color: #fff;
 	width: 240px;
@@ -216,59 +219,6 @@ ul#list-nav li a:hover {
   color:#eee
 }
 
-div.NewProject {
-	width: 450px;
-	margin-left: auto;
-  	margin-right: auto;
-}
-div.NewPerson {
-	width: 450px;
-	margin-left: auto;
-  	margin-right: auto;
-}
-div.NewBudget {
-	width: 450px;
-	margin-left: auto;
-  	margin-right: auto;
-}
-div.NewBudget img,
-div.NewBudget input[type="text"],
-div.NewBudget select,
-div.NewBudget input[type="number"]{
-	float: right;
-	margin: 0px;
-}
-
-div.NewBudget select {
-	width: 150px;
-	margin-right: 26px;
-}
-div.NewBudget input[type="text"] {
-	width: 146px;
-	margin-right: 26px;
-}
-div.NewBudget img {
-	padding-top: 2px;
-}
-div.lookup input[type="text"] {
-	margin-right: 0px;
-}
-div.NewBudget input[type="number"] {
-	margin-right:26px;
-}
-
-input.firstname {
-	width: 300px;
-	margin-left: 22px;
-}
-input.lastname {
-	width: 300px;
-	margin-left: 22px;
-}
-/*div.more_info input {
-	width: 250px;
-	float: right;
-}*/
 div.more_info {
 	text-align: left;
 	height: 110px;
@@ -318,11 +268,11 @@ input.sow {
 	float: right;
 	background: url('/img/editIcon.gif') bottom;
 }
-ul#projectList {
+ul#itemList {
 	list-style: none;
 	padding-right: 40px;
 }
-ul#projectList li {
+ul#itemList li {
 	border: 1px solid #3a4a54;
 	margin-bottom: -1px;
 }
@@ -367,7 +317,8 @@ ul#projectList li {
 }
 
 .black-btn {
-  color: #FFF;
+  color: #FFF !important;
+  font-color: #FFF;
   background: #373b3f;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #373b3f), color-stop(1, #52565a));
   background: -ms-linear-gradient(bottom, #373b3f, #52565a);

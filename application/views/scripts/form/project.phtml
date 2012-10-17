@@ -1,0 +1,22 @@
+<form
+	action="<?php echo $this->escape( $this->element->getAction() ) ?>"
+	method="<?php echo $this->escape( $this->element->getMethod() ) ?>" >
+	<fieldset>
+		<legend>General Information</legend>
+		<?php echo $this->element->name ?>
+		<?php echo $this->element->code ?>
+	</fieldset>
+	<fieldset>
+		<legend>People</legend>
+		<?php echo $this->element->accountable ?>
+		<?php echo $this->element->responsible ?>
+		<?php echo $this->element->etc_keeper ?>
+		<?php echo $this->element->expense_approver ?>
+	</fieldset>
+	<fieldset>
+		<legend>Project Details</legend>
+		<?php echo $this->element->phase ?>
+		<?php echo $this->element->status ?>
+	</fieldset>
+	<button type="submit" value="next" class="pill-btn black-btn">Next</button>
+</form>

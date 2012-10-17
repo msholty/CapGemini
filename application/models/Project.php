@@ -42,10 +42,10 @@ class Application_Model_Project
                     throw new Exception('Cannot update Project\'s id!');
                 }
                 break;
-            case 'dateCreated':
+            case 'date_created':
                 //same goes for date_created
-                if( !is_null($this->dateCreated) ) {
-                    throw new Exception('Cannot update Project\'s dateCreated');
+                if( !is_null($this->date_created) ) {
+                    throw new Exception('Cannot update Project\'s date_created');
                 }
                 break;
         }

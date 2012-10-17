@@ -22,3 +22,7 @@ function sendSelection(id, fullname) {
 	window.opener.document.getElementById(window.name+"_hidden").value = id;
 	window.close();
 }
+
+$(function() {
+    $( "#tabs" ).tabs();
+});

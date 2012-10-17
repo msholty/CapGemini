@@ -21,7 +21,9 @@ class Application_Model_ProjectMapper
                 'accountable' => $project_object->accountable,
                 'responsible' => $project_object->responsible,
                 'etc_keeper' => $project_object->etc_keeper,
-                'expense_approver' => $project_object->expense_approver
+                'expense_approver' => $project_object->expense_approver,
+        		'phase' => $project_object->phase,
+        		'status' => $project_object->status
         );
 
         //Check if the Project object has an ID
@@ -29,16 +31,20 @@ class Application_Model_ProjectMapper
         //if yes, then it means you're updating an old Project
         if( is_null($project_object->id) ) {
             $data['date_created'] = date('Y-m-d H:i:s');
-            $this->_db_table->insert($data);
+            return $this->_db_table->insert($data);
         }
         else {
-            $this->_db_table->update(
+            return $this->_db_table->update(
                     $data,
                     array(
                             'id = ?' => $project_object->id
                     )
             );
         }
+    }
+    public function delete($id) {
+    	$where = $this->_db_table->getAdapter()->quoteInto('id = ?', $id);
+    	$this->_db_table->delete($where);
     }
     public function getProjectById($id)
     {

@@ -1,7 +1,7 @@
 <div class="body-container">
     <p><?php echo $this->results->count() ?> Active</p>
     <p>List of projects:</p>
-    <ul id="projectList">
+    <ul id="itemList">
         <?php echo $this->partialLoop('projects/partials/projectList.phtml', $this->results) ?>
     </ul>
     <a href="/projects/new/" class="pill-btn black-btn">New Project</a>

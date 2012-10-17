@@ -26,7 +26,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initRouter()
     {
         // Get Front Controller Instance
-        $front = Zend_Controller_Front::getInstance();
+        /*$front = Zend_Controller_Front::getInstance();
 
         // Get Router
         $router = $front->getRouter();
@@ -40,7 +40,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                 )
         );
 
-        //$router->addRoute('projects', $route);
+        //$router->addRoute('projects', $route);*/
     }
 }
 

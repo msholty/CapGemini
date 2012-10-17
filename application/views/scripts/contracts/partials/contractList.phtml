@@ -1,0 +1,11 @@
+<li>
+    <a href="<?php echo $this->url(
+            array(
+                    'controller' => 'contracts',
+                    'action' => 'view',
+                    'id' => $this->contract_id
+            )
+    ); ?>">
+        <?php echo "Contract: ".$this->contract_number ?>
+    </a>
+</li>

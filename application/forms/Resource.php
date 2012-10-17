@@ -9,41 +9,72 @@ class Application_Form_Resource extends Zend_Form
 
     public function __construct($options = null) {
         parent::__construct($options);
-        $this->setAction($options['action']) //Action is a passed in option
-             ->setMethod('post'); //Form is a POST form
+        $this
+        	->setAction($options['action']) //Action is a passed in option
+            ->setMethod('post'); //Form is a POST form
 
         // Resource First Name field
-        $firstName = new Zend_Form_Element_Text(
-                'firstName',
-                array(
-                        'required' => true,
-                        'placeholder' => 'First Name'
-                )
-        );
+        $first_name = new Zend_Form_Element_Text('first_name');
+        $first_name
+	        ->setAttrib('name', 'first_name')
+	        ->setAttrib('required', 'true')
+	        ->setAttrib('placeholder', 'First Name');
+
+        // Resource Middle Name field
+        $middle_name = new Zend_Form_Element_Text('middle_name');
+        $middle_name
+	        ->setAttrib('name', 'middle_name')
+	        ->setAttrib('placeholder', 'Middle Name');
+
         // Resource Last Name field
-        $lastName = new Zend_Form_Element_Text(
-                'lastName',
-                array(
-                        'required' => false,
-                        'placeholder' => 'Last Name'
-                )
-        );
+        $last_name = new Zend_Form_Element_Text('last_name');
+        $last_name
+	        ->setAttrib('name', 'last_name')
+	        ->setAttrib('required', 'true')
+	        ->setAttrib('placeholder', 'Last Name');
+
         // Resource Last Name field
-        $email = new Zend_Form_Element_Text(
-                'lastName',
-                array(
-                        'required' => false,
-                        'placeholder' => 'Last Name'
-                )
-        );
+        $email = new Zend_Form_Element_Text('last_name');
+        $email
+        	->setAttrib('name', 'phone_number')
+        	->setAttrib('required', 'true')
+			->setAttrib('placeholder', 'Phone Number');
+
         // Resource Phone Number field (text)
-        $phoneNumber = new Zend_Form_Element_Text(
-                'phoneNumber',
-                array(
-                        'required' => true,
-                        'placeholder' => 'Phone Number'
-                )
-        );
+        $phone_number = new Zend_Form_Element_Text('phone_number');
+        $phone_number
+        	->setAttrib('name', 'phone_number')
+			->setAttrib('required', 'true')
+        	->setAttrib('placeholder', 'Phone Number');
+
+        // Resource Phone Number field (text)
+        $email = new Zend_Form_Element_Text('email');
+        $email
+        	->setAttrib('name', 'resource_type')
+        	->setAttrib('required', 'true')
+        	->setAttrib('placeholder', 'Email');
+
+        $resource_type = new Zend_Form_Element_Select('resource_type');
+        $resource_type
+        	->setAttrib('name', 'resource_type')
+			->setAttrib('required', 'true')
+			->setAttrib('placeholder', 'Resource Type');
+
+        $table = new Application_Model_DbTable_ResourceType();
+        foreach ($table->fetchAll() as $c) {
+        	$resource_type->addMultiOption($c->type, $c->type);
+        }
+
+        $title = new Zend_Form_Element_Select('title');
+        $title->setAttrib('name', 'resource_type')
+        	  ->setAttrib('required', 'true')
+              ->setAttrib('placeholder', 'Title');
+
+        $table = new Application_Model_DbTable_ResourceTitle();
+        foreach ($table->fetchAll() as $c) {
+        	$title->addMultiOption($c->title, $c->title);
+        }
+
         // Submit button
         $submit = new Zend_Form_Element_Button(
                 'save',
@@ -57,9 +88,13 @@ class Application_Form_Resource extends Zend_Form
         //Add all the elements to the form
         $this->addElements(
             array(
-                    $firstName,
-                    $lastName,
-                    $phoneNumber,
+                    $first_name,
+            		$middle_name,
+                    $last_name,
+                    $phone_number,
+            		$email,
+            		$resource_type,
+            		$title,
                     $submit
             )
         );

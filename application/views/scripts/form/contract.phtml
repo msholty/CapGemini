@@ -1,0 +1,19 @@
+<form
+	action="<?php echo $this->escape( $this->element->getAction() ) ?>"
+	method="<?php echo $this->escape( $this->element->getMethod() ) ?>" >
+	<?php echo $this->element->project_id ?>
+	<fieldset>
+		<legend>Timeline</legend>
+		Start Date:<input type="date" name="start_date" /><br>
+		End Date:<input type="date" name="end_date" />
+	</fieldset>
+	<fieldset>
+		<legend>General Information</legend>
+		<?php echo $this->element->spade_id ?>
+		<?php echo $this->element->contract_number ?>
+		<?php echo $this->element->billing_type ?>
+		<?php echo $this->element->purchase_order ?>
+		<?php echo $this->element->contract_type ?>
+	</fieldset><br>
+	<button type="submit" name="submit" class="pill-btn black-btn">Save</button>
+</form>

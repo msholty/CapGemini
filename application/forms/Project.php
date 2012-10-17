@@ -2,100 +2,103 @@
 
 class Application_Form_Project extends Zend_Form
 {
-    public function __construct($options = null) {
-        parent::__construct($options);
+	public function __construct($options = null) {
+		parent::__construct($options);
 
-        $this->setAction($options['action'])    //Action is a passed in option
-             ->setMethod('post')                //Form is a POST form
-        /*     ->setDecorators(array(
-                array('ViewScript', array('viewScript' => 'project.phtml'))
-        ))*/;
+		$this->setAction($options['action'])    //Action is a passed in option
+			 ->setMethod('post')                //Form is a POST form
+			 ->setDecorators(array(
+				array('ViewScript', array('viewScript' => 'form/project.phtml'))
+			 ));
 
-        // Project name field
-        $name = new Zend_Form_Element_Text('name');
-        $name->setRequired(true);
+		// Project name field
+		$name = new Zend_Form_Element_Text('name');
+		$name->setAttribs(array(
+				'required' => true,
+				'name' => 'name',
+				'placeholder' => 'Name'))
+			 ->setLabel('Name:');
 
-        // Project Code field
-        $code = new Zend_Form_Element_Text('code');
-        $code->setRequired(true);
+			 // Project Code field
+		$code = new Zend_Form_Element_Text('code');
+		$code->setAttrib('placeholder', 'Code')
+		->setAttrib('required', 'true')
+		->setLabel('Code:');
 
-        // Project Accountable field (text)
-        $accountable = new Zend_Form_Element_Text('accountable');
-        $accountable->setRequired(true);
+		// Project Accountable field (text)
+		$accountable = new Zend_Form_Element_Select('accountable');
+		$accountable->setRequired(true)
+		->setLabel('Accountable:');
 
-        // Project Responsible field
-        $responsible = new Zend_Form_Element_Text('responsible');
-        $responsible->setRequired(true);
+		// Project Responsible field
+		$responsible = new Zend_Form_Element_Select('responsible');
+		$responsible->setRequired(true)
+		->setLabel('Responsible:');
 
-        // Project ETC Keeper field
-        $etcKeeper = new Zend_Form_Element_Text('etcKeeper');
-        $etcKeeper->setRequired(true);
-
-        // Project Expense Approver field
-        $expenseApprover = new Zend_Form_Element_Text('etcKeeper');
-        $expenseApprover->setRequired(true);
-
-        // Submit button
-        $submit = new Zend_Form_Element_Button('save');
-        $submit->setAttribs(
-                array(
-                        'class' => 'pill-btn black-btn',
-                        'name' => 'Save',
-                        'type' => 'submit'
-                ));
-
-        /**************** Hidden form fields ***************/
-        // Project Accountable field (hidden)
-        $accountable_hidden = new Zend_Form_Element_Hidden(
-                'accountable_hidden',
-                array(
-                        'required' => true
-                )
-        );
-        $accountable_hidden->setDecorators(array('ViewHelper'));
-        // Project Responsible field (hidden)
-        $responsible_hidden = new Zend_Form_Element_Hidden(
-                'responsible_hidden',
-                array(
-                        'required' => true
-                )
-        );
-        $responsible_hidden->setDecorators(array('ViewHelper'));
-        // Project etcKeeper field (hidden)
-        $etcKeeper_hidden = new Zend_Form_Element_Hidden(
-                'etcKeeper_hidden',
-                array(
-                        'required' => true
-                )
-        );
-        $etcKeeper_hidden->setDecorators(array('ViewHelper'));
-        // Project Expense Approver field (hidden)
-        $expenseApprover_hidden = new Zend_Form_Element_Hidden(
-                'expenseApprover_hidden',
-                array(
-                        'required' => true
-                )
-        );
-        $expenseApprover_hidden->setDecorators(array('ViewHelper'));
-        /*************** End Hidden Fields ******************/
+		// Project ETC Keeper field
+		$etc_keeper = new Zend_Form_Element_Select('etc_keeper');
+		$etc_keeper->setRequired(true)
+		->setLabel('ETC Keeper:');
 
 
-        //Add all the elements to the form
-        $this->addElements(
-                array(
-                        $name,
-                        $code,
-                        $accountable,
-                        $responsible,
-                        $etcKeeper,
-                        $expenseApprover,
-                        $accountable_hidden,
-                        $responsible_hidden,
-                        $etcKeeper_hidden,
-                        $expenseApprover_hidden,
-                        $submit
-                )
-        );
-    }
+		// Project Expense Approver field
+		$expense_approver = new Zend_Form_Element_Select('expense_approver');
+		$expense_approver->setRequired(true)
+		->setLabel('Expense Approver:');
+
+		$table = new Application_Model_DbTable_Resource();
+		foreach ($table->fetchAll() as $c) {
+			$accountable->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
+			$responsible->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
+			$etc_keeper->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
+			$expense_approver->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
+		}
+
+		/************ Conditional Elements **************/
+
+		$phase = new Zend_Form_Element_Select('phase');
+		$phase->setLabel('Phase:');
+
+		$table = new Application_Model_DbTable_ProjectPhase();
+		foreach ($table->fetchAll() as $c) {
+			$phase->addMultiOption($c->phase, $c->phase);
+		}
+
+		$status = new Zend_Form_Element_Select('status');
+		$status->setLabel('Status:');
+
+		$table = new Application_Model_DbTable_ProjectStatus();
+		foreach ($table->fetchAll() as $c) {
+			$status->addMultiOption($c->status, $c->status);
+		}
+
+
+		/************ End Conditional Elements **********/
+
+		// Submit button
+		$submit = new Zend_Form_Element_Button('submit');
+		$submit->setAttribs(
+				array(
+						'class' => 'pill-btn black-btn',
+						'name' => 'Save',
+						'type' => 'submit'
+				))
+			   ->setLabel('Next');
+
+		//Add all the elements to the form
+		$this->addElements(
+				array(
+						$name,
+						$code,
+						$accountable,
+						$responsible,
+						$etc_keeper,
+						$expense_approver,
+						$phase,
+						$status,
+						$submit
+				)
+		);
+	}
 }
 

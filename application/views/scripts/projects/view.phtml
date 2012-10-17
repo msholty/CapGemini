@@ -1,27 +1,60 @@
 <div class="body-container">
     <h1><?php echo $this->project->name?></h1>
-    <a href="/projects/" class="pill-btn black-btn">Back</a>
-    <h2>General Information</h2>
-    <form>
-        <label name="Id">Id: <?php echo $this->project->id ?></label><br>
-        Code: <?php echo $this->project->code ?><br>
-        Accountable: <?php echo $this->project->accountable ?><br>
-        Responsible: <?php echo $this->project->responsible ?><br>
-        ETC Keeper: <?php  echo $this->project->etc_keeper ?><br>
-        Expense Approver: <?php echo $this->project->expense_approver ?><br><br>
-        <a href="<?php echo $this->url(
-            array(
-                    'controller' => 'projects',
-                    'action' => 'edit',
-                    'id' => $this->id
-            )
-        );?>" class="pill-btn black-btn">Edit</a>
-        <a href="<?php echo $this->url(
-            array(
-                    'controller' => 'projects',
-                    'action' => 'add-budget',
-                    'id' => $this->id
-            )
-        );?>" class="pill-btn black-btn">Add Budget</a>
-    </form>
+	<div id="tabs">
+		<ul>
+	        <li><a href="#tabs-general">General Information</a></li>
+	        <li><a href="#tabs-contract">Change Orders</a></li>
+	        <li><a href="#tabs-budget">Budget</a></li>
+	        <li><a href="#tabs-config"><img src="<?php echo $this->baseUrl('/media/site/img/content/icons/gear.jpeg') ?>" height="12" width="12"></li>
+	    </ul>
+	    <form id="tabs-general">
+	    	<h3>General Information</h3>
+	        <label>Code: <?php echo $this->project->code ?></label><br>
+	        Accountable: <?php echo $this->accountable->last_name . ', ' . $this->accountable->first_name ?><br>
+	        Responsible: <?php echo $this->responsible->last_name . ', ' . $this->responsible->first_name ?><br>
+	        ETC Keeper: <?php echo $this->etc_keeper->last_name . ', ' . $this->etc_keeper->first_name ?><br>
+	        Expense Approver: <?php echo $this->expense_approver->last_name . ', ' . $this->expense_approver->first_name ?><br>
+	        Phase: <?php echo $this->project->phase ?><br>
+	        Status: <?php echo $this->project->status ?><br><br>
+	        <a href="<?php echo $this->url(
+	            array(
+	                    'controller' => 'projects',
+	                    'action' => 'edit',
+	                    'id' => $this->id
+	            )
+	        );?>" class="pill-btn black-btn">Edit</a>
+	    </form>
+	    <div id="tabs-contract">
+	    	<ul id="itemList">
+		        <?php echo $this->partialLoop('contracts/partials/contractList.phtml', $this->contracts) ?>
+		    </ul>
+	    	<a href="<?php echo $this->url(
+		            array(
+		                    'controller' => 'contracts',
+		                    'action' => 'new',
+		                    'pid' => $this->id
+		            ),
+					null,
+					TRUE
+		        );?>" class="pill-btn black-btn">Add Contract</a>
+	    </div>
+	    <div id="tabs-budget">
+		    <a href="<?php echo $this->url(
+		            array(
+		                    'controller' => 'projects',
+		                    'action' => 'add-budget',
+		                    'id' => $this->id
+		            )
+		        );?>" class="pill-btn black-btn">Add Budget</a>
+	    </div>
+	    <div id="tabs-config">
+			<a href="<?php echo $this->url(
+		            array(
+		                    'controller' => 'projects',
+		                    'action' => 'delete',
+		                    'id' => $this->id
+		            )
+		        );?>" class="pill-btn black-btn">Delete Project</a>
+	    </div>
+	</div>
 </div>
