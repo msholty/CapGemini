@@ -35,6 +35,8 @@ class ProjectsController extends Zend_Controller_Action
                 $project->responsible = intval($form->getValue('responsible'));
                 $project->etc_keeper = intval($form->getValue('etc_keeper'));
                 $project->expense_approver = intval($form->getValue('expense_approver'));
+                $project->phase = $form->getValue('phase');
+                $project->status = $form->getValue('status');
                 $project->date_created = date('Y-m-d H:i:s');
 
                 //Insert into database
@@ -74,6 +76,23 @@ class ProjectsController extends Zend_Controller_Action
         $this->view->expense_approver 	= 	$resource_mapper->getResourceById($result->expense_approver);
         // store project in view
         $this->view->project = $result;
+
+        $contract_mapper = new Application_Model_ContractMapper();
+        $contracts = $contract_mapper->getContractsByProjectId($id);
+        $sow = $contract_mapper->getSOW($id);
+        $final_end_date = '';
+
+        foreach($contracts as $c) {
+        	$end_date_str = strtotime($c->end_date);
+        	$final_end_date_str = strtotime($final_end_date);
+
+        	if($end_date_str > $final_end_date_str) {
+        		$final_end_date = $c->end_date;
+        	}
+        }
+
+        $this->view->start_date = $sow->start_date;
+        $this->view->end_date = $final_end_date;
 
         $contract_mapper = new Application_Model_ContractMapper();
         // Store the results in the view so we can render them with partials
@@ -144,9 +163,9 @@ class ProjectsController extends Zend_Controller_Action
     public function deleteAction()
     {
     	// Get id from url
-    	$id = $this->getRequest()->getParam('id');
+    	$pid = $this->getRequest()->getParam('pid');
     	// Check to see if they specified id in the url and its a valid id
-    	if($id == null || !intval($id)) {
+    	if($pid == null || !intval($pid)) {
     		// Redirect because to view a project, they have to specify one in the url
     		$this->_redirect('/projects/');
     		exit();
@@ -154,35 +173,12 @@ class ProjectsController extends Zend_Controller_Action
 
     	//Get project from database
     	$project_mapper = new Application_Model_ProjectMapper();
-    	$project_mapper->delete($id);
+    	$project_mapper->delete($pid);
+
+    	$contract_mapper = new Application_Model_ContractMapper();
+    	$contract_mapper->deleteContracts($pid);
+
     	$this->_redirect('/projects/');
-		/*echo "delete1";
-    	if ($this->_request->getPost()) {
-    		$project_mapper->delete($id);
-    		$this->_redirect('/projects/');
-    	}
-
-    	$deleteProject = $project_mapper->getProjectById($id);
-    	$this->view->project = $deleteProject;*/
-    }
-
-    public function addBudgetAction()
-    {
-    	// Get project id from url
-    	$pid = $this->getRequest()->getParam('pid');
-    	// Check to see if they specified id in the url and its a valid id
-    	if($pid == null || !intval($pid)) {
-    		// Redirect because to view a project, they have to specify one in the url
-    		$this->_redirect('/contracts/');
-    		exit();
-    	}
-
-    	$form = new Application_Form_AddBudget(
-    			array(
-    					'action' => '/projects/addBudget/id/'.$pid
-    			)
-    	);
-    	$this->view->form = $form;
     }
 }
 

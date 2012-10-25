@@ -62,6 +62,9 @@ class Application_Form_Project extends Zend_Form
 		$table = new Application_Model_DbTable_ProjectPhase();
 		foreach ($table->fetchAll() as $c) {
 			$phase->addMultiOption($c->phase, $c->phase);
+			if($c->default) {
+				$phase->setValue($c->phase);
+			}
 		}
 
 		$status = new Zend_Form_Element_Select('status');
@@ -70,6 +73,9 @@ class Application_Form_Project extends Zend_Form
 		$table = new Application_Model_DbTable_ProjectStatus();
 		foreach ($table->fetchAll() as $c) {
 			$status->addMultiOption($c->status, $c->status);
+			if($c->default) {
+				$status->setValue($c->status);
+			}
 		}
 
 

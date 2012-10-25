@@ -48,7 +48,7 @@ class ContractsController extends Zend_Controller_Action
         		$contract->start_date = $formData['start_date'];
         		$contract->end_date = $formData['end_date'];
         		$contract->parent_contract_number = $form->getValue('parent_contract_number');
-        		$contract->contract_type = $formData['contract_type'];
+        		$contract->contract_type = $form->getValue('contract_type');
         		$contract->purchase_order = $form->getValue('purchase_order');
         		$contract->billing_type = $form->getValue('billing_type');
         		$contract->date_created = date('Y-m-d H:i:s');
@@ -68,11 +68,31 @@ class ContractsController extends Zend_Controller_Action
 
     public function viewAction()
     {
+    // get id from request (from url)
+        $id = $this->getRequest()->getParam('id');
+        // Check to see if they specified id in the url and its a valid id
+        if($id == null || !intval($id)) {
+            // Redirect because to view a project, they have to specify one in the url
+            $this->_redirect('/projects/');
+            exit();
+        }
+
+        $contract_mapper = new Application_Model_ContractMapper();
+        $contract = $contract_mapper->getContractById($id);
+
+        $this->view->contract = $contract;
+        $this->view->contract_id = $id;
+    }
+
+    public function editAction()
+    {
         // action body
     }
 
 
 }
+
+
 
 
 

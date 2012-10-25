@@ -21,7 +21,7 @@ class Application_Model_Contract
 	{
 		if( !is_null($contract_row) && $contract_row instanceof Zend_Db_Table_Row ) {
 			$this->contract_id = $contract_row->contract_id;
-			$this->project_id = $contract_id->project_id;
+			$this->project_id = $contract_row->project_id;
 			$this->spade_id = $contract_row->spade_id;
 			$this->start_date = $contract_row->start_date;
 			$this->end_date = $contract_row->end_date;

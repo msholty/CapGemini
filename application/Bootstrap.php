@@ -19,8 +19,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view = $this->bootstrap('view')->getResource('view');
         $view->addHelperPath(
             APPLICATION_PATH . '/views/helpers',
-            'Default_View_Helper_'
+            'Application_View_Helper_'
         );
+    }
+
+	/**
+     * Init default controller action helpers
+     */
+    protected function _initDefaultControllerActionHelpers()
+    {
+        Zend_Controller_Action_HelperBroker::addPath('controllers/helpers');
     }
 
     protected function _initRouter()
@@ -38,9 +46,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
                         'controller' => 'projects',
                         'action'     => 'view'
                 )
-        );
+        );*/
 
-        //$router->addRoute('projects', $route);*/
+        //$router->addRoute('projects', $route);
     }
 }
 
