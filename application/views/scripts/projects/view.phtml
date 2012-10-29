@@ -4,9 +4,12 @@
 	</h1>
 	<div id="tabs">
 		<ul>
-			<li><a href="#tabs-general">General Information</a></li>
-			<li><a href="#tabs-contract">Change Orders</a></li>
-			<li><a href="#tabs-budget">Roles</a></li>
+			<li><a href="#tabs-general">General Information</a>
+			</li>
+			<li><a href="#tabs-contract">Change Orders</a>
+			</li>
+			<li><a href="#tabs-budget">Roles</a>
+			</li>
 			<li><a href="#tabs-config"><img
 					src="<?php echo $this->baseUrl('/media/site/img/content/icons/gear.jpeg') ?>"
 					height="12" width="12">
@@ -34,14 +37,10 @@
 			<?php echo $this->end_date?>
 			<br> <br> <a
 				href="<?php echo $this->url(
-	            array(
-	                    'controller' => 'roles',
-	                    'action' => 'new',
-	                    'cid' => $this->id
-	            ),
-				null,
-				TRUE
-	        );?>"
+		            array('controller' => 'roles', 'action' => 'new', 'cid' => $this->id),
+					null,
+					TRUE
+	        	);?>"
 				class="pill-btn black-btn">New Role</a>
 		</div>
 		<div id="tabs-contract">
@@ -50,11 +49,7 @@
 			</ul>
 			<a
 				href="<?php echo $this->url(
-		            array(
-		                    'controller' => 'contracts',
-		                    'action' => 'new',
-		                    'pid' => $this->id
-		            ),
+		            array('controller' => 'contracts', 'action' => 'new', 'pid' => $this->id),
 					null,
 					TRUE
 		        );?>"
@@ -63,11 +58,7 @@
 		<div id="tabs-budget">
 			<a
 				href="<?php echo $this->url(
-		            array(
-		                    'controller' => 'roles',
-		                    'action' => 'new',
-		                    'pid' => $this->id
-		            ),
+		            array('controller' => 'roles', 'action' => 'new', 'cid' => $this->id),
 					null,
 					TRUE
 		        );?>"
@@ -78,13 +69,14 @@
 				href="<?php echo $this->url(
 		            array('controller' => 'projects', 'action' => 'delete', 'pid' => $this->id),
 					null,
-					TRUE);?>"
-				class="pill-btn black-btn">Delete Project</a>
-			<a
+					TRUE
+				);?>"
+				class="pill-btn black-btn">Delete Project</a> <a
 				href="<?php echo $this->url(
 	            	array('controller' => 'projects', 'action' => 'edit', 'id' => $this->id),
 					null,
-					TRUE);?>"
+					TRUE
+				);?>"
 				class="pill-btn black-btn">Edit</a>
 		</div>
 	</div>

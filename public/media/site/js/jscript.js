@@ -23,6 +23,11 @@ function sendSelection(id, fullname) {
 	window.close();
 }
 
+function setActive(element) {
+	//alert('hi');
+	document.getElementById(element).className += " active";
+}
+
 $(function() {
     $( "#tabs" ).tabs();
 });

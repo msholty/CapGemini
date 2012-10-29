@@ -47,6 +47,9 @@
           <actionMethod actionName="view"/>
           <actionMethod actionName="edit"/>
         </controllerFile>
+        <controllerFile controllerName="Reports">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Resource"/>
@@ -190,6 +193,9 @@
           <viewControllerScriptsDirectory forControllerName="Roles">
             <viewScriptFile forActionName="edit"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Reports">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
@@ -262,6 +268,9 @@
             <testApplicationActionMethod forActionName="new"/>
             <testApplicationActionMethod forActionName="view"/>
             <testApplicationActionMethod forActionName="edit"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Reports">
+            <testApplicationActionMethod forActionName="index"/>
           </testApplicationControllerFile>
         </testApplicationControllerDirectory>
         <testApplicationModulesDirectory>
