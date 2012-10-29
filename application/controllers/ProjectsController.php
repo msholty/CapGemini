@@ -1,5 +1,4 @@
 <?php
-
 class ProjectsController extends Zend_Controller_Action
 {
 
@@ -9,10 +8,9 @@ class ProjectsController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // Create mapper object
-        $project_mapper = new Application_Model_ProjectMapper();
-        // Store the results in the view so we can render them with partials
-        $this->view->results = $project_mapper->getProjects();
+     	// Get projects and store them in the view
+     	$projects = new Application_Model_Document_Project();
+    	$this->view->projects = $projects->all();
     }
 
     public function newAction()
@@ -28,23 +26,26 @@ class ProjectsController extends Zend_Controller_Action
             $formData = $this->_request->getPost();
             if ($form->isValid($formData)) {
                 //Create a new project with post data
-                $project = new Application_Model_Project();
-                $project->name = $form->getValue('name');
-                $project->code = $form->getValue('code');
-                $project->accountable = intval($form->getValue('accountable'));
-                $project->responsible = intval($form->getValue('responsible'));
-                $project->etc_keeper = intval($form->getValue('etc_keeper'));
-                $project->expense_approver = intval($form->getValue('expense_approver'));
-                $project->phase = $form->getValue('phase');
-                $project->status = $form->getValue('status');
-                $project->date_created = date('Y-m-d H:i:s');
+                $data = array(
+                	"name" => $form->getValue('name'),
+	                "code" => $form->getValue('code'),
+	                "accountable" => $form->getValue('accountable'),
+	                "responsible" => $form->getValue('responsible'),
+	                "etc_keeper" => $form->getValue('etc_keeper'),
+	                "expense_approver" => $form->getValue('expense_approver'),
+	                "phase" => $form->getValue('phase'),
+	                "status" => $form->getValue('status'),
+	                "date_created" => date('Y-m-d H:i:s'),
+                );
+                $project = new Application_Model_Document_Project($data);
+                $project->save();
 
                 //Insert into database
                 $project_mapper = new Application_Model_ProjectMapper();
                 $pid = $project_mapper->save($project);
 
                 //Redirect to project's view screen /contracts/new/pid/:id
-                $this->_redirect('/contracts/new/pid/'.$pid);
+                $this->_redirect('/contracts/new/pid/'.$project->_id);
             }
         }
 

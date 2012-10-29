@@ -3,8 +3,8 @@
 class Application_Model_Contract
 {
 	//declare the Contract's attributes
-	private $contract_id;
-	private $project_id;
+	private $contract_id; //JSON ObjectID
+	private $project_id; //JSON ObjectID reference
 	private $spade_id;
 	private $start_date;
 	private $end_date;
@@ -19,7 +19,7 @@ class Application_Model_Contract
 	//from the $contract_row if available
 	public function __construct($contract_row = null)
 	{
-		if( !is_null($contract_row) && $contract_row instanceof Zend_Db_Table_Row ) {
+		if( !is_null($contract_row) ) {
 			$this->contract_id = $contract_row->contract_id;
 			$this->project_id = $contract_row->project_id;
 			$this->spade_id = $contract_row->spade_id;

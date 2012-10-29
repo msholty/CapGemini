@@ -1,8 +1,9 @@
 <div class="body-container">
-    <p><?php echo $this->results->count() ?> Active</p>
+    <p><?php echo $this->projects->count() ?> Active</p>
     <p>List of projects:</p>
+    <?php var_dump($this->projects); ?>
     <ul id="itemList">
-        <?php echo $this->partialLoop('projects/partials/projectList.phtml', $this->results) ?>
+        <?php echo $this->partialLoop('projects/partials/projectList.phtml', $this->projects) ?>
     </ul>
     <a href="/projects/new/" class="pill-btn black-btn">New Project</a>
     <form>

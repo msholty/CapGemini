@@ -83,6 +83,7 @@
         <modelFile modelName="ProjectStatus"/>
         <modelFile modelName="ResourceTitle"/>
         <modelFile modelName="Contract"/>
+        <modelFile modelName="BillingType"/>
       </modelsDirectory>
       <modulesDirectory>
         <moduleDirectory moduleName="projects">

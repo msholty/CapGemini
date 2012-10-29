@@ -1,13 +1,12 @@
 <?php
-
-class Application_Model_ContractMapper
+class Application_Model_Mapper_Contract
 {
 	protected $_db_table;
 
 	public function __construct()
 	{
 		//Instantiate the Table Data Gateway for the Contract table
-		$this->_db_table = new Application_Model_DbTable_Contract();
+		$this->_db_table = new Application_Model_Document_Contract();
 	}
 
 	public function save(Application_Model_Contract $contract_object)
@@ -33,13 +32,13 @@ class Application_Model_ContractMapper
 		if( is_null($contract_object->id) ) {
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$this->_db_table->insert($data);
+
+			$user = new Application_Model_Document_Contract($data);
+			$user->save();
 		}
 		else {
-			$this->_db_table->update(
-					$data,
-					array(
-							'id = ?' => $contract_object->id
-					)
+			$contract = Application_Model_Document_Contract::find($contract_object->id);
+			$contract->save($data);
 			);
 		}
 	}

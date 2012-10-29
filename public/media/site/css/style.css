@@ -94,6 +94,7 @@ a:hover {
 }
 
 .side-container {
+	margin-left: 100px;
 	padding: 10px 10px 30px 10px;
 	float: left;
 	/*left: 0px;*/
@@ -104,6 +105,7 @@ a:hover {
 }
 
 .note-container {
+	margin-right: 100px;
 	padding: 10px 10px 30px 10px;
 	float: right;
 	border: 2px solid #3a4a54;

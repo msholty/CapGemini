@@ -10,7 +10,7 @@ class ContractsController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+		// action body
     }
 
     public function newAction()
@@ -18,11 +18,6 @@ class ContractsController extends Zend_Controller_Action
     	// Get project id from url
     	$pid = $this->getRequest()->getParam('pid');
     	// Check to see if they specified id in the url and its a valid id
-    	if($pid == null || !intval($pid)) {
-    		// Redirect because to view a project, they have to specify one in the url
-    		//$this->_redirect('/contracts/');
-    		//exit();
-    	}
 
     	$project_mapper = new Application_Model_ProjectMapper();
     	$project_object = $project_mapper->getProjectById($pid);
