@@ -9,8 +9,7 @@ class ProjectsController extends Zend_Controller_Action
     public function indexAction()
     {
      	// Get projects and store them in the view
-     	$projects = new Application_Model_Document_Project();
-    	$this->view->projects = $projects->all();
+    	$this->view->projects = Application_Model_Document_Project::all();
     }
 
     public function newAction()
@@ -27,22 +26,27 @@ class ProjectsController extends Zend_Controller_Action
             if ($form->isValid($formData)) {
                 //Create a new project with post data
                 $data = array(
-                	"name" => $form->getValue('name'),
-	                "code" => $form->getValue('code'),
-	                "accountable" => $form->getValue('accountable'),
-	                "responsible" => $form->getValue('responsible'),
-	                "etc_keeper" => $form->getValue('etc_keeper'),
-	                "expense_approver" => $form->getValue('expense_approver'),
-	                "phase" => $form->getValue('phase'),
-	                "status" => $form->getValue('status'),
-	                "date_created" => date('Y-m-d H:i:s'),
+                	'name' => $form->getValue('name'),
+	                'code' => $form->getValue('code'),
+	                'accountable' => $form->getValue('accountable'),
+	                'responsible' => $form->getValue('responsible'),
+	                'etc_keeper' => $form->getValue('etc_keeper'),
+	                'expense_approver' => $form->getValue('expense_approver'),
+	                'phase' => $form->getValue('phase'),
+	                'status' => $form->getValue('status'),
+	                'date_created' => date('Y-m-d H:i:s'),
                 );
-                $project = new Application_Model_Document_Project($data);
+                $project = new Application_Model_Document_Project();
+                $project->name = $form->getValue('name');
+                $project->code = $form->getValue('code');
+                $project->accountable = Application_Model_Document_Resource::find($form->getValue('accountable'));
+                $project->responsible = Application_Model_Document_Resource::find($form->getValue('responsible'));
+                $project->etc_keeper = Application_Model_Document_Resource::find($form->getValue('etc_keeper'));
+                $project->expense_approver = Application_Model_Document_Resource::find($form->getValue('expense_approver'));
+                $project->phase = Application_Model_Document_ProjectPhase::find($form->getValue('phase'));
+                $project->status = Application_Model_Document_ProjectStatus::find($form->getValue('status'));
+                $project->date_created = date('Y-m-d H:i:s');
                 $project->save();
-
-                //Insert into database
-                $project_mapper = new Application_Model_ProjectMapper();
-                $pid = $project_mapper->save($project);
 
                 //Redirect to project's view screen /contracts/new/pid/:id
                 $this->_redirect('/contracts/new/pid/'.$project->_id);
@@ -66,38 +70,30 @@ class ProjectsController extends Zend_Controller_Action
         // store it in the view
         $this->view->id = $id;
         // fetch from DB
-        $project_mapper = new Application_Model_ProjectMapper();
-        $result = $project_mapper->getProjectById($id);
+        $project = Application_Model_Document_Project::find($id);
 
-        // get the people from fields and find their names
-        $resource_mapper = new Application_Model_ResourceMapper();
-        $this->view->accountable 		= 	$resource_mapper->getResourceById($result->accountable);
-        $this->view->responsible 		= 	$resource_mapper->getResourceById($result->responsible);
-        $this->view->etc_keeper 		= 	$resource_mapper->getResourceById($result->etc_keeper);
-        $this->view->expense_approver 	= 	$resource_mapper->getResourceById($result->expense_approver);
         // store project in view
-        $this->view->project = $result;
+        $this->view->project = $project;
 
-        $contract_mapper = new Application_Model_ContractMapper();
-        $contracts = $contract_mapper->getContractsByProjectId($id);
-        $sow = $contract_mapper->getSOW($id);
-        $final_end_date = '';
+        $sow = $project->sow;
+        $change_orders = $project->change_orders;
+        $final_end_date = $sow->end_date;
+		if(!is_null($change_orders)) {
+	        foreach($change_orders as $c) {
+	        	$end_date_str = strtotime($c->end_date);
+	        	$final_end_date_str = strtotime($final_end_date);
 
-        foreach($contracts as $c) {
-        	$end_date_str = strtotime($c->end_date);
-        	$final_end_date_str = strtotime($final_end_date);
+	        	if($end_date_str > $final_end_date_str) {
+	        		$final_end_date = $c->end_date;
+	        	}
+	        }
+		}
+		else {
+			$final_end_date = strtotime($sow->end_date);
+		}
 
-        	if($end_date_str > $final_end_date_str) {
-        		$final_end_date = $c->end_date;
-        	}
-        }
-
-        $this->view->start_date = $sow->start_date;
         $this->view->end_date = $final_end_date;
-
-        $contract_mapper = new Application_Model_ContractMapper();
-        // Store the results in the view so we can render them with partials
-        $this->view->contracts = $contract_mapper->getContractsByProjectId($id);
+        $this->view->change_orders = $change_orders;
     }
 
     public function editAction()
@@ -112,8 +108,7 @@ class ProjectsController extends Zend_Controller_Action
         }
 
         //Get project from database
-        $project_mapper = new Application_Model_ProjectMapper();
-        $updateProject = $project_mapper->getProjectById($id);
+        $project = Application_Model_Document_Project::find($id);
 
         // Define the form
         $form = new Application_Form_Project(array(
@@ -128,16 +123,16 @@ class ProjectsController extends Zend_Controller_Action
             // Check if form is valid
             if ($form->isValid($formData)) {
                 // Assign all the form values to our updateProject to save
-                $updateProject->name = $formData['name'];
-                $updateProject->code = $formData['code'];
-                $updateProject->accountable = $formData['accountable'];
-                $updateProject->responsible = $formData['responsible'];
-                $updateProject->etc_keeper = $formData['etc_keeper'];
-                $updateProject->expense_approver = $formData['expense_approver'];
-                $updateProject->phase = $formData['phase'];
-                $updateProject->status = $formData['status'];
+                $project->name = $formData['name'];
+                $project->code = $formData['code'];
+                $project->accountable = $formData['accountable'];
+                $project->responsible = $formData['responsible'];
+                $project->etc_keeper = $formData['etc_keeper'];
+                $project->expense_approver = $formData['expense_approver'];
+                $project->phase = $formData['phase'];
+                $project->status = $formData['status'];
                 // Save the project
-                $project_mapper->save($updateProject);
+                $project->save();
                 // Redirect to the view of the project
                 $this->_redirect('/projects/view/id/'.$id);
                 exit();
@@ -172,13 +167,13 @@ class ProjectsController extends Zend_Controller_Action
     		exit();
     	}
 
-    	//Get project from database
-    	$project_mapper = new Application_Model_ProjectMapper();
-    	$project_mapper->delete($pid);
-
-    	$contract_mapper = new Application_Model_ContractMapper();
-    	$contract_mapper->deleteContracts($pid);
-
+    	Application_Model_Document_Project::remove(array('_id' => $pid ));
+    	/*
+    	 * TODO: delete all associated contracts
+    	 * $contract_mapper = new Application_Model_ContractMapper();
+    	 * $contract_mapper->deleteContracts($pid);
+    	 *
+		 */
     	$this->_redirect('/projects/');
     }
 }

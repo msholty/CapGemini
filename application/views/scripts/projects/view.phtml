@@ -1,15 +1,12 @@
 <div class="body-container">
 	<h1>
-		<?php echo $this->project->name?>
+		<?php echo $this->project->name ?>
 	</h1>
 	<div id="tabs">
 		<ul>
-			<li><a href="#tabs-general">General Information</a>
-			</li>
-			<li><a href="#tabs-contract">Change Orders</a>
-			</li>
-			<li><a href="#tabs-budget">Roles</a>
-			</li>
+			<li><a href="#tabs-general">General Information</a></li>
+			<li><a href="#tabs-contract">Change Orders</a></li>
+			<li><a href="#tabs-budget">Roles</a></li>
 			<li><a href="#tabs-config"><img
 					src="<?php echo $this->baseUrl('/media/site/img/content/icons/gear.jpeg') ?>"
 					height="12" width="12">
@@ -20,19 +17,19 @@
 			<h3>General Information</h3>
 			<label>Code: <?php echo $this->project->code ?>
 			</label><br> Accountable:
-			<?php echo $this->accountable->last_name . ', ' . $this->accountable->first_name ?>
+			<?php echo $this->project->accountable->name->last . ', ' . $this->project->accountable->name->first ?>
 			<br> Responsible:
-			<?php echo $this->responsible->last_name . ', ' . $this->responsible->first_name ?>
+			<?php echo $this->project->responsible->name->last . ', ' . $this->project->responsible->name->first ?>
 			<br> ETC Keeper:
-			<?php echo $this->etc_keeper->last_name . ', ' . $this->etc_keeper->first_name ?>
+			<?php echo $this->project->etc_keeper->name->last . ', ' . $this->project->etc_keeper->name->first ?>
 			<br> Expense Approver:
-			<?php echo $this->expense_approver->last_name . ', ' . $this->expense_approver->first_name ?>
+			<?php echo $this->project->expense_approver->name->last . ', ' . $this->project->expense_approver->name->first ?>
 			<br> Phase:
-			<?php echo $this->project->phase ?>
+			<?php echo $this->project->phase->value ?>
 			<br> Status:
-			<?php echo $this->project->status ?>
+			<?php echo $this->project->status->value ?>
 			<br> Start Date:
-			<?php echo $this->start_date ?>
+			<?php echo $this->project->sow->start_date ?>
 			<br> End Date:
 			<?php echo $this->end_date?>
 			<br> <br> <a
@@ -45,7 +42,17 @@
 		</div>
 		<div id="tabs-contract">
 			<ul id="itemList">
-				<?php echo $this->partialLoop('contracts/partials/contractList.phtml', $this->contracts) ?>
+				<?php foreach($this->project->change_orders as $c): ?>
+				<li><a
+					href="<?php echo $this->url(
+				            array(
+				                    'controller' => 'contracts',
+				                    'action' => 'view',
+				                    'id' => $c->_id
+				            )
+					); ?>"> <?php echo "Contract: ".$c->contract_number ?>
+				</a></li>
+				<?php endforeach;?>
 			</ul>
 			<a
 				href="<?php echo $this->url(

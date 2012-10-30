@@ -46,12 +46,12 @@ class Application_Form_Project extends Zend_Form
 		$expense_approver->setRequired(true)
 		->setLabel('Expense Approver:');
 
-		$table = new Application_Model_DbTable_Resource();
-		foreach ($table->fetchAll() as $c) {
-			$accountable->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
-			$responsible->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
-			$etc_keeper->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
-			$expense_approver->addMultiOption($c->id, $c->last_name . ', ' . $c->first_name);
+		$collection = Application_Model_Document_Resource::all();
+		foreach ($collection as $c) {
+			$accountable->addMultiOption($c->_id, $c->name->last . ', ' . $c->name->first);
+			$responsible->addMultiOption($c->_id, $c->name->last . ', ' . $c->name->first);
+			$etc_keeper->addMultiOption($c->_id, $c->name->last . ', ' . $c->name->first);
+			$expense_approver->addMultiOption($c->_id, $c->name->last . ', ' . $c->name->first);
 		}
 
 		/************ Conditional Elements **************/
@@ -59,22 +59,20 @@ class Application_Form_Project extends Zend_Form
 		$phase = new Zend_Form_Element_Select('phase');
 		$phase->setLabel('Phase:');
 
-		$table = new Application_Model_DbTable_ProjectPhase();
-		foreach ($table->fetchAll() as $c) {
-			$phase->addMultiOption($c->phase, $c->phase);
+		foreach (Application_Model_Document_ProjectPhase::all() as $c) {
+			$phase->addMultiOption($c->_id, $c->value);
 			if($c->default) {
-				$phase->setValue($c->phase);
+				$phase->setValue($c->value);
 			}
 		}
 
 		$status = new Zend_Form_Element_Select('status');
 		$status->setLabel('Status:');
 
-		$table = new Application_Model_DbTable_ProjectStatus();
-		foreach ($table->fetchAll() as $c) {
-			$status->addMultiOption($c->status, $c->status);
+		foreach (Application_Model_Document_ProjectStatus::all() as $c) {
+			$status->addMultiOption($c->_id, $c->value);
 			if($c->default) {
-				$status->setValue($c->status);
+				$status->setValue($c->value);
 			}
 		}
 

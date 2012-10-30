@@ -1,9 +1,20 @@
 <div class="body-container">
     <p><?php echo $this->projects->count() ?> Active</p>
     <p>List of projects:</p>
-    <?php var_dump($this->projects); ?>
     <ul id="itemList">
-        <?php echo $this->partialLoop('projects/partials/projectList.phtml', $this->projects) ?>
+        <?php foreach($this->projects as $project): ?>
+        <li>
+		    <a href="<?php echo $this->url(
+		            array(
+		                    'controller' => 'projects',
+		                    'action' => 'view',
+		                    'id' => $project->_id
+		            )
+		    ); ?>">
+		        <?php echo $project->_id . ": " . $project->name ?>
+		    </a>
+		</li>
+        <?php endforeach;?>
     </ul>
     <a href="/projects/new/" class="pill-btn black-btn">New Project</a>
     <form>

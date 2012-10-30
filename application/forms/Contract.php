@@ -7,8 +7,8 @@ class Application_Form_Contract extends Zend_Form
 		parent::__construct($options);
 
 		$this->setAction($options['action'])		//Action is a passed in option
-			 ->setMethod('post')							//Form is a POST form
-			 ->setDecorators(array(
+		->setMethod('post')							//Form is a POST form
+		->setDecorators(array(
 				array('ViewScript', array('viewScript' => 'form/contract.phtml'))
 		));
 
@@ -32,13 +32,12 @@ class Application_Form_Contract extends Zend_Form
 		// billing_type Select
 		$billing_type = new Zend_Form_Element_Select('billing_type');
 		$billing_type->setRequired(true)
-					 ->setLabel('Billing Type:');
+		->setLabel('Billing Type:');
 
-		$table = new Application_Model_DbTable_BillingType();
-		foreach ($table->fetchAll() as $c) {
-			$billing_type->addMultiOption($c->type, $c->type);
+		foreach (Application_Model_Document_BillingType::all() as $c) {
+			$billing_type->addMultiOption($c->_id, $c->value);
 			if($c->default) {
-				$billing_type->setValue($c->type);
+				$billing_type->setValue($c->value);
 			}
 		}
 		// purchase_order Text
@@ -56,11 +55,10 @@ class Application_Form_Contract extends Zend_Form
 		$contract_type->setRequired(true)
 		->setLabel('Contract Type:');
 
-		$table = new Application_Model_DbTable_ContractType();
-		foreach ($table->fetchAll() as $c) {
-			$contract_type->addMultiOption($c->type, $c->type);
+		foreach (Application_Model_Document_ContractType::all() as $c) {
+			$contract_type->addMultiOption($c->_id, $c->value);
 			if($c->default = 1) {
-				$contract_type->setValue($c->type);
+				$contract_type->setValue($c->value);
 			}
 		}
 

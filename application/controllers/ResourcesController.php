@@ -10,12 +10,8 @@ class ResourcesController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // Create mapper object
-        $resource_mapper = new Application_Model_ResourceMapper();
-        // Query for all resources, store in variable called $results
-        $results = $resource_mapper->getResources();
-        // Store the results in the view so it can render them with partials
-        $this->view->results = $results;
+        // Store the resources in the view so it can render them with partials
+        $this->view->resources = Application_Model_Document_Resource::all();
     }
 
     public function newAction()

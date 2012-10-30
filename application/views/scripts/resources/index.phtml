@@ -1,8 +1,20 @@
 <div class="body-container">
-    <p><?php echo $this->results->count() ?> Active</p>
+    <p><?php echo $this->resources->count() ?> Active</p>
     <p>List of resources:</p>
     <ul id="itemList">
-        <?php echo $this->partialLoop('resources/partials/resourceList.phtml', $this->results) ?>
+        <?php foreach($this->resources as $resource): ?>
+        <li>
+		    <a href="<?php echo $this->url(
+		            array(
+		                    'controller' => 'resources',
+		                    'action' => 'view',
+		                    'id' => $resource->_id
+		            )
+		    ); ?>">
+		        <?php echo $resource->name->last . ", " . $resource->name->first ?>
+		    </a>
+		</li>
+        <?php endforeach;?>
     </ul>
     <a href="/resources/new/" class="pill-btn black-btn">New Resource</a>
     <form method="post">
