@@ -1,10 +1,41 @@
 <div class="body-container">
-	<h1><?php echo $this->resource->last_name . " " . $this->resource->first_name ?></h1><br>
-	<label>Id: </label> <?php echo $this->resource->id ?><br>
-	<label>Phone Number:</label> <?php echo $this->resource->phone_number ?><br>
-	<label>Email:</label> <?php echo $this->resource->email ?><br>
-	<label>Resource Type: </label> <?php echo $this->resource->resource_type ?><br>
-	<label>Title: <?php echo $this->resource->title ?></label><br>
+	<h1>
+		<?php echo $this->resource->name->first . " " . $this->resource->name->last ?>
+	</h1>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-general">General Information</a></li>
+			<li><a href="#tabs-more">More Info</a></li>
+			<li><a href="#tabs-evenmore">Even More Info</a></li>
+			<li><a href="#tabs-config"><img
+					src="<?php echo $this->baseUrl('/media/site/img/content/icons/gear.jpeg') ?>"
+					height="12" width="12">
+
+			</li>
+		</ul>
+		<div id="tabs-general">
+			<h3>General Information</h3>
+			<br> <label>Id: </label>
+			<?php echo $this->resource->_id ?>
+			<br> <label>Phone Number:</label>
+			<?php echo $this->resource->phone_number ?>
+			<br> <label>Email:</label>
+				<a href="mailto:<?php echo $this->resource->email?>?Subject=Hello%20<?php echo $this->resource->name->first?>">
+					<?php echo $this->resource->email ?>
+				</a>
+			<br> <label>Resource Type: </label>
+			<?php echo $this->resource->resource_type->value ?>
+			<br> <label>Title: <?php echo $this->resource->title->value ?>
+			</label>
+		</div>
+		<div id="tabs-more"></div>
+		<div id="tabs-evenmore"></div>
+		<div id="tabs-config"><a
+
+			href="/resources/edit/id/<?php echo $this->resource->_id ?>"
+			class="pill-btn black-btn">
+			Edit</a>
+		</div>
+	</div>
 	<br>
-	<a href="/resources/edit/id/<?php echo $this->resource->id ?>" class="pill-btn black-btn">Edit</a>
 </div>

@@ -1,8 +1,6 @@
 @CHARSET "ISO-8859-1";
 
 html {
-	font-family: Arial,Helvetica,sans-serif;
-
 	/* IE10 Consumer Preview */
 	background-image: -ms-linear-gradient(top, #ADB8FF 0%, #0A5EEF 100%);
 
@@ -62,8 +60,6 @@ a:hover {
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -4em;
-	/*margin-right: 100px;
-	margin-left: 100px;*/
 }
 
 .popup-wrapper {

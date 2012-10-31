@@ -16,15 +16,19 @@
 		<div id="tabs-general">
 			<h3>General Information</h3>
 			<label>Code: <?php echo $this->project->code ?>
-			</label><br> Accountable:
-			<?php echo $this->project->accountable->name->last . ', ' . $this->project->accountable->name->first ?>
-			<br> Responsible:
+			</label><br> Accountable: <a
+				href="/resources/view/id/<?php echo $this->project->accountable->_id ?>">
+				<?php echo $this->project->accountable->name->last . ', ' . $this->project->accountable->name->first ?>
+			</a> <br> Responsible: <a
+				href="/resources/view/id/<?php echo $this->project->responsible->_id ?>">
 			<?php echo $this->project->responsible->name->last . ', ' . $this->project->responsible->name->first ?>
-			<br> ETC Keeper:
+			<br> ETC Keeper: <a
+				href="/resources/view/id/<?php echo $this->project->etc_keeper->_id ?>">
 			<?php echo $this->project->etc_keeper->name->last . ', ' . $this->project->etc_keeper->name->first ?>
-			<br> Expense Approver:
+			</a><br> Expense Approver: <a
+				href="/resources/view/id/<?php echo $this->project->expense_approver->_id ?>">
 			<?php echo $this->project->expense_approver->name->last . ', ' . $this->project->expense_approver->name->first ?>
-			<br> Phase:
+			</a><br> Phase:
 			<?php echo $this->project->phase->value ?>
 			<br> Status:
 			<?php echo $this->project->status->value ?>
@@ -32,13 +36,6 @@
 			<?php echo $this->project->sow->start_date ?>
 			<br> End Date:
 			<?php echo $this->end_date?>
-			<br> <br> <a
-				href="<?php echo $this->url(
-		            array('controller' => 'roles', 'action' => 'new', 'cid' => $this->id),
-					null,
-					TRUE
-	        	);?>"
-				class="pill-btn black-btn">New Role</a>
 		</div>
 		<div id="tabs-contract">
 			<ul id="itemList">

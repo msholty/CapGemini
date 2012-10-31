@@ -60,9 +60,8 @@ class Application_Form_Resource extends Zend_Form
 			->setAttrib('required', 'true')
 			->setAttrib('placeholder', 'Resource Type');
 
-        $table = new Application_Model_DbTable_ResourceType();
-        foreach ($table->fetchAll() as $c) {
-        	$resource_type->addMultiOption($c->type, $c->type);
+        foreach (Application_Model_Document_ResourceType::all() as $c) {
+        	$resource_type->addMultiOption($c->_id, $c->value);
         }
 
         $title = new Zend_Form_Element_Select('title');
@@ -70,9 +69,8 @@ class Application_Form_Resource extends Zend_Form
         	  ->setAttrib('required', 'true')
               ->setAttrib('placeholder', 'Title');
 
-        $table = new Application_Model_DbTable_ResourceTitle();
-        foreach ($table->fetchAll() as $c) {
-        	$title->addMultiOption($c->title, $c->title);
+        foreach (Application_Model_Document_ResourceTitle::all() as $c) {
+        	$title->addMultiOption($c->_id, $c->value);
         }
 
         // Submit button

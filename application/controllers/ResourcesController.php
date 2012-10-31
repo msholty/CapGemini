@@ -26,22 +26,18 @@ class ResourcesController extends Zend_Controller_Action
         //Check to see if the new project was submited
         if ($this->_request->getPost()) {
             //Get form data
-            $formData = $this->_request->getPost();
-            if ($form->isValid($formData)) {
+            if ($form->isValid($this->_request->getPost())) {
                 //Create a new project with post data
-                $resource = new Application_Model_Resource();
-                $resource->first_name = $form->getValue('first_name');
-                $resource->middle_name = $form->getValue('middle_name');
-                $resource->last_name = $form->getValue('last_name');
+                $resource = new Application_Model_Document_Resource();
+                $resource->name->first = $form->getValue('first_name');
+                $resource->name->middle = $form->getValue('middle_name');
+                $resource->name->last = $form->getValue('last_name');
                 $resource->phone_number = $form->getValue('phone_number');
                 $resource->email = $form->getValue('email');
-                $resource->resource_type = $form->getValue('resource_type');
-                $resource->title = $form->getValue('title');
+                $resource->resource_type = Application_Model_Document_ResourceType::find($form->getValue('resource_type'));
+                $resource->title = Application_Model_Document_ResourceTitle::find($form->getValue('title'));
                 $resource->date_created = date('Y-m-d H:i:s');
-
-                //Insert into database
-                $resource_mapper = new Application_Model_ResourceMapper();
-                $resource_mapper->save($resource);
+				$resource->save();
 
                 //Redirect to project's view screen /people/view/:id
                 $this->_redirect('/resources/view/id/'.$id);
@@ -63,9 +59,7 @@ class ResourcesController extends Zend_Controller_Action
         }
 
         // Get the resource from the database
-        $resource_mapper = new Application_Model_ResourceMapper();
-        $resource = $resource_mapper->getResourceById($id);
-        $this->view->resource = $resource;
+        $this->view->resource = Application_Model_Document_Resource::find($id);
     }
 
     public function editAction()
@@ -79,33 +73,27 @@ class ResourcesController extends Zend_Controller_Action
             exit();
         }
 
-        //Get project from database
-        $resource_mapper = new Application_Model_ResourceMapper();
-        $updateResource = $resource_mapper->getResourceById($id);
-
         // Define the form
         $form = new Application_Form_Resource(array(
             'action' => '/resources/edit/id/'.$id,
             'submitLabel' => 'Update'
         ));
 
+        $resource = Application_Model_Document_Resource::find($id);
+
         //Check to see if the user has submited the form or just requesting it
         if ($this->_request->getPost()) { // Form is submited, now we populate proper database object to reflect changes
-            // Get form data
-            $formData = $this->_request->getPost();
             // Check if form is valid
-            if ($form->isValid($formData)) {
+            if ($form->isValid($this->_request->getPost())) {
                 // Assign all the form values to our updateProject to save
-                $updateResource->first_name = $formData['first_name'];
-                $updateResource->middle_name = $formData['middle_name'];
-                $updateResource->last_name = $formData['last_name'];
-                $updateResource->phone_number = $formData['phone_number'];
-                $updateResource->email = $formData['email'];
-                $updateResource->resource_type= $formData['resource_type'];
-                $updateResource->title = $formData['title'];
-
-                // Save the project
-                $resource_mapper->save($updateResource);
+                $resource->name->first = $form->getValue('first_name');
+                $resource->name->middle = $form->getValue('middle_name');
+                $resource->name->last = $form->getValue('last_name');
+                $resource->phone_number = $form->getValue('phone_number');
+                $resource->email = $form->getValue('email');
+                $resource->resource_type= Application_Model_Document_ResourceType::find($form->getValue('resource_type'));
+                $resource->title = Application_Model_Document_ResourceTitle::find($form->getValue('title'));
+                $resource->save();
                 // Redirect to the view of the project
                 $this->_redirect('/resources/view/id/'.$id);
                 exit();
@@ -116,13 +104,13 @@ class ResourcesController extends Zend_Controller_Action
         }
 
         $formData = array(
-            'first_name' => $updateResource->first_name,
-            'middle_name' => $updateResource->middle_name,
-            'last_name' => $updateResource->last_name,
-            'phone_number' => $updateResource->phone_number,
-            'email' => $updateResource->email,
-            'resource_type' => $updateResource->resource_type,
-        	'title' => $updateResource->title
+            'first_name' => $resource->name->first,
+            'middle_name' => $resource->name->middle,
+            'last_name' => $resource->name->last,
+            'phone_number' => $resource->phone_number,
+            'email' => $resource->email,
+            'resource_type' => $resource->resource_type->value,
+        	'title' => $resource->title->value
         );
         $form->populate($formData);
         $this->view->form = $form;

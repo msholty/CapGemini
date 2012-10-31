@@ -11,8 +11,8 @@ class Application_Model_Document_Resource extends Shanty_Mongo_Document
         'name.last' => 'Required',
         'email' => array('Required', 'Validator:EmailAddress'),
 		'phone_number' => 'Required',
-		'date_created' => array('Required','Validator:Date'),
-		'title' => array('Document:ResourceTitle', 'AsReference'),
-		'type' => array('Document:ResourceType', 'AsReference')
+		'date_created' => 'Required',
+		'title' => array('Document:Application_Model_Document_ResourceTitle', 'AsReference'),
+		'type' => array('Document:Application_Model_Document_ResourceType', 'AsReference')
     );
 }

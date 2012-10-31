@@ -22,20 +22,8 @@ class ProjectsController extends Zend_Controller_Action
         //Check to see if the new project was submited
         if ($this->_request->getPost()) {
             //Get form data
-            $formData = $this->_request->getPost();
-            if ($form->isValid($formData)) {
+            if ($form->isValid($this->_request->getPost())) {
                 //Create a new project with post data
-                $data = array(
-                	'name' => $form->getValue('name'),
-	                'code' => $form->getValue('code'),
-	                'accountable' => $form->getValue('accountable'),
-	                'responsible' => $form->getValue('responsible'),
-	                'etc_keeper' => $form->getValue('etc_keeper'),
-	                'expense_approver' => $form->getValue('expense_approver'),
-	                'phase' => $form->getValue('phase'),
-	                'status' => $form->getValue('status'),
-	                'date_created' => date('Y-m-d H:i:s'),
-                );
                 $project = new Application_Model_Document_Project();
                 $project->name = $form->getValue('name');
                 $project->code = $form->getValue('code');
