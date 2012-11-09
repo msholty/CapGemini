@@ -155,13 +155,8 @@ class ProjectsController extends Zend_Controller_Action
     		exit();
     	}
 
-    	Application_Model_Document_Project::remove(array('_id' => $pid ));
-    	/*
-    	 * TODO: delete all associated contracts
-    	 * $contract_mapper = new Application_Model_ContractMapper();
-    	 * $contract_mapper->deleteContracts($pid);
-    	 *
-		 */
+    	$project = Application_Model_Document_Project::find($pid);
+    	$project->sow->delete();
     	$this->_redirect('/projects/');
     }
 }
