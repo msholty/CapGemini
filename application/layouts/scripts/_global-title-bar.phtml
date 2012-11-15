@@ -1,16 +1,37 @@
-<div class="header">
-	<div id="left">
-	    <a href="http://www.capgemini.com">
-	        <img src="<?php echo $this->baseUrl('/media/site/img/content/title-bar/CapGemini.png') ?>" alt="CapGemini" />
-	    </a>
-	</div>
-	<div id="right">
-	    <a href="http://disneyworld.disney.go.com/">
-	        <img src="<?php echo $this->baseUrl('/media/site/img/content/title-bar/WaltDisney.png') ?>" alt="Walt Disney" />
-	    </a>
-	</div>
-	<div id="middle">
-		<h1><a href="<?php echo $this->baseUrl(); ?>">Account as a Platform</a></h1>
-	</div>
-	<div id="bottom"></div>
-</div>
+<header>
+	<nav id="global-title-bar">
+		<div style="white-space: nowrap;">
+			<ul>
+				<li><a id="home"
+					class="feed-icon gray small actionable labeled-icon"
+					href="/opportunities/">Opportunities</a>
+				</li>
+				<li><a id="profile"
+					class="star-icon gray medium actionable labeled-icon "
+					href="/projects/">Projects</a>
+				</li>
+				<li><a id="track"
+					class="fito-icon gray small actionable labeled-icon "
+					href="/financials/">Financials</a>
+				</li>
+				<li><a id="nav_ldrbrd"
+					class="leaders-icon gray small actionable labeled-icon "
+					href="/resources/">Resources</a>
+				</li>
+				<li><a id="groups"
+					class="group-icon gray small actionable labeled-icon " href="/qa/">Q/A</a>
+				</li>
+				<li><a id="forum"
+					class="science-icon gray small actionable labeled-icon "
+					href="/reports/">Reports</a>
+				</li>
+			</ul>
+
+			<form id="nav_search" action="/global_search/" method="GET">
+				<input value="Search..." id="global_search" name="global_search">
+				<button>Search</button>
+			</form>
+
+		</div>
+	</nav>
+</header>

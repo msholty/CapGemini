@@ -1,47 +1,21 @@
 <div class="body-container">
-	<div class="card-container">
-		<div class="card track-card everyday_activities flippy">
-			<div class="card-front widget">
-				<div class="widget-subsection card-splash-image">
-					<img
-						src="/media/site/img/content/test/msholty.jpg">
-				</div>
-
-				<div class="widget-subsection card-title">
-					<div class="content">
-						<span>Michael Sholty</span>
-					</div>
-				</div>
-
-				<div class="widget-subsection card-footer">
-					<span class="emphasis">Staff Consultant</span> US East TEST TEST TEST TEST TEST TEST
-				</div>
-
-			</div>
-
-			<div class="card-back card-rotate widget">
-				<div class="widget-subsection card-exercise-list">
-					<ul>
-						<li>Phone Number
-							<div class="secondary">(765) 461-8772</div>
-						</li>
-						<li>Location
-							<div class="secondary">Orlando</div>
-						</li>
-						<li>Email
-							<div class="secondary">mike.sholty@capgemini.com</div>
-						</li>
-					</ul>
-				</div>
-
-				<div class="widget-subsection card-footer">
-					<a
-						class="white-btn pill-btn get_prompt from_static everyday_activities"
-						href="/resources/view/id/5090262568a7fd3f0d000001/">View Profile</a>
-				</div>
-
-			</div>
+	<div class="deck-pane">
+		<div id="card-deck">
+			<?php if (count($this->paginator)): ?>
+			<ul>
+				<?php foreach ($this->paginator as $resource): ?>
+				<?php echo $this->profileCard($resource); ?>
+				<?php endforeach; ?>
+			</ul>
+			<?php endif; ?>
 		</div>
+		<?php
+		echo $this->paginationControl(
+			$this->paginator,
+			'Sliding',
+            '/resources/partials/dot-nav.phtml'
+        );
+		?>
 	</div>
-	<?php echo $this->profileCard()?>
+	<a href="/resources/new/" class="pill-btn black-btn">New Resource</a>
 </div>

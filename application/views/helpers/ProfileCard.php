@@ -1,25 +1,28 @@
 <?php
 	class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 	{
-		public function profileCard()
+		public function profileCard($resource)
 		{
-			echo <<<HTML
+			$html = <<<HTML
 	<div class="card-container">
 		<div class="card track-card everyday_activities flippy">
 			<div class="card-front widget">
 				<div class="widget-subsection card-splash-image">
 					<img
 						src="/media/site/img/content/test/ted.jpg">
+HTML;
+			$html .= <<<HTML
 				</div>
 
 				<div class="widget-subsection card-title">
 					<div class="content">
-						<span>Teddy Bear</span>
+						<span>{$resource->name->first} {$resource->name->last}</span>
 					</div>
 				</div>
 
 				<div class="widget-subsection card-footer">
-					<span class="emphasis">Senior Manager</span> US West TEST TEST TEST TEST TEST TEST
+					<span class="emphasis">{$resource->title->value}</span> US East<br>
+					<span class="emphasis">{$resource->phoneNumber}</span> Test
 				</div>
 
 			</div>
@@ -27,14 +30,14 @@
 			<div class="card-back card-rotate widget">
 				<div class="widget-subsection card-exercise-list">
 					<ul>
-						<li>Phone Number
-							<div class="secondary">(765) 555-5555</div>
+						<li>Resource Type
+							<div class="secondary">{$resource->resource_type->value}</div>
 						</li>
 						<li>Location
-							<div class="secondary">San Diego</div>
+							<div class="secondary">Orlando</div>
 						</li>
 						<li>Email
-							<div class="secondary">teddy.bear@capgemini.com</div>
+							<div class="secondary">{$resource->email}</div>
 						</li>
 					</ul>
 				</div>
@@ -42,13 +45,16 @@
 				<div class="widget-subsection card-footer">
 					<a
 						class="white-btn pill-btn get_prompt from_static everyday_activities"
-						href="/resources/view/id/5090262568a7fd3f0d000001/">View Profile</a>
+						href="/resources/view/id/{$resource->_id}/">View Profile</a>
 				</div>
 
 			</div>
 		</div>
 	</div>
-HTML
-		;}
+HTML;
+			return $html;
+		}
+
+		function getAvatar() { }
 	}
 ?>
