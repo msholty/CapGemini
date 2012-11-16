@@ -23,7 +23,7 @@ class ResourcesController extends Zend_Controller_Action
 			$array[] = $resource;
 		}
 		$paginator = Zend_Paginator::factory($array);
-		$paginator->setCurrentPageNumber($page);
+		$paginator->setCurrentPageNumber(intval($page));
 		$paginator->setItemCountPerPage(8);
 		$this->view->paginator = $paginator;
 	}
