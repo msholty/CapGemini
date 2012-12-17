@@ -91,3 +91,8 @@ $(document).ready(function() {
 		parseHash(); // Tweedle-dum
 	};
 });
+
+/******* jQueryUI stuff ********/
+$(function() {
+    $( "#tabs" ).tabs();
+});

@@ -8,8 +8,21 @@ class ProjectsController extends Zend_Controller_Action
 
     public function indexAction()
     {
+    	//TODO: get the page number from the url
+    	$page = $this->getRequest()->getParam('page');
+
      	// Get projects and store them in the view
-    	$this->view->projects = Application_Model_Document_Project::all();
+     	$projects = Application_Model_Document_Project::all();
+
+    	$this->view->projects = $projects;
+    	foreach($projects as $project) {
+    		$array[] = $project;
+    	}
+
+    	$paginator = Zend_Paginator::factory($array);
+    	$paginator->setCurrentPageNumber(intval($page));
+    	$paginator->setItemCountPerPage(18);
+    	$this->view->paginator = $paginator;
     }
 
     public function newAction()

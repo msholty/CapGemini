@@ -39,13 +39,26 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         // Get Router
         $router = $front->getRouter();
 
-        //id = project.id in database
+        //id = resource._id in database
         $route = new Zend_Controller_Router_Route(
                 'resources/page/:page',
                 array(
+                		'module'	 => 'default',
                         'controller' => 'resources',
                         'action'     => 'index'
                 )
+        );
+
+        $router->addRoute('resources', $route);
+
+        //id = project.id in database
+        $route = new Zend_Controller_Router_Route(
+        		'projects/page/:page',
+        		array(
+        				'module'	 => 'default',
+        				'controller' => 'projects',
+        				'action'     => 'index'
+        		)
         );
 
         $router->addRoute('projects', $route);

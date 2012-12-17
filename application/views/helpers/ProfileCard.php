@@ -1,17 +1,14 @@
 <?php
-	class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
+class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
+{
+	public function profileCard($resource)
 	{
-		public function profileCard($resource)
-		{
-			$html = <<<HTML
+		$html = <<<HTML
 	<div class="card-container">
 		<div class="card track-card everyday_activities flippy">
 			<div class="card-front widget">
 				<div class="widget-subsection card-splash-image">
-					<img
-						src="/media/site/img/content/test/ted.jpg">
-HTML;
-			$html .= <<<HTML
+					<img src="/media/site/img/content/test/ted.jpg">
 				</div>
 
 				<div class="widget-subsection card-title">
@@ -52,9 +49,10 @@ HTML;
 		</div>
 	</div>
 HTML;
-			return $html;
-		}
-
-		function getAvatar() { }
+		return $html;
 	}
+
+	function getAvatar() {
+	}
+}
 ?>
