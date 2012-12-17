@@ -1,0 +1,87 @@
+<div class="body-container">
+	<h1>
+		<?php echo $this->project->name ?>
+	</h1>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-general">General Information</a></li>
+			<li><a href="#tabs-contract">Change Orders</a></li>
+			<li><a href="#tabs-budget">Roles</a></li>
+			<li><a href="#tabs-config"><img
+					src="<?php echo $this->baseUrl('/media/site/img/content/icons/gear.jpeg') ?>"
+					height="12" width="12">
+
+			</li>
+		</ul>
+		<div id="tabs-general">
+			<h3>General Information</h3>
+			<label>Code: <?php echo $this->project->code ?>
+			</label><br> Accountable: <a
+				href="/resources/view/id/<?php echo $this->project->accountable->_id ?>">
+				<?php echo $this->project->accountable->name->last . ', ' . $this->project->accountable->name->first ?>
+			</a> <br> Responsible: <a
+				href="/resources/view/id/<?php echo $this->project->responsible->_id ?>">
+			<?php echo $this->project->responsible->name->last . ', ' . $this->project->responsible->name->first ?>
+			<br> ETC Keeper: <a
+				href="/resources/view/id/<?php echo $this->project->etc_keeper->_id ?>">
+			<?php echo $this->project->etc_keeper->name->last . ', ' . $this->project->etc_keeper->name->first ?>
+			</a><br> Expense Approver: <a
+				href="/resources/view/id/<?php echo $this->project->expense_approver->_id ?>">
+			<?php echo $this->project->expense_approver->name->last . ', ' . $this->project->expense_approver->name->first ?>
+			</a><br> Phase:
+			<?php echo $this->project->phase->value ?>
+			<br> Status:
+			<?php echo $this->project->status->value ?>
+			<br> Start Date:
+			<?php echo $this->project->sow->start_date ?>
+			<br> End Date:
+			<?php echo $this->end_date?>
+		</div>
+		<div id="tabs-contract">
+			<ul id="itemList">
+				<?php foreach($this->project->change_orders as $c): ?>
+				<li><a
+					href="<?php echo $this->url(
+				            array(
+				                    'controller' => 'contracts',
+				                    'action' => 'view',
+				                    'id' => $c->_id
+				            )
+					); ?>"> <?php echo "Contract: ".$c->contract_number ?>
+				</a></li>
+				<?php endforeach;?>
+			</ul>
+			<a
+				href="<?php echo $this->url(
+		            array('controller' => 'contracts', 'action' => 'new', 'pid' => $this->id),
+					null,
+					TRUE
+		        );?>"
+				class="pill-btn black-btn">Add Contract</a>
+		</div>
+		<div id="tabs-budget">
+			<a
+				href="<?php echo $this->url(
+		            array('controller' => 'roles', 'action' => 'new', 'cid' => $this->id),
+					null,
+					TRUE
+		        );?>"
+				class="pill-btn black-btn">Add Role</a>
+		</div>
+		<div id="tabs-config">
+			<a
+				href="<?php echo $this->url(
+		            array('controller' => 'projects', 'action' => 'delete', 'pid' => $this->id),
+					null,
+					TRUE
+				);?>"
+				class="pill-btn black-btn">Delete Project</a> <a
+				href="<?php echo $this->url(
+	            	array('controller' => 'projects', 'action' => 'edit', 'id' => $this->id),
+					null,
+					TRUE
+				);?>"
+				class="pill-btn black-btn">Edit</a>
+		</div>
+	</div>
+</div>

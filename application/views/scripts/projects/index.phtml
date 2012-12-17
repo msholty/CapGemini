@@ -1,0 +1,25 @@
+<div class="body-container">
+    <p><?php echo $this->projects->count() ?> Active</p>
+    <p>List of projects:</p>
+    <ul id="itemList">
+        <?php foreach($this->projects as $project): ?>
+        <li>
+		    <a href="<?php echo $this->url(
+		            array(
+		                    'controller' => 'projects',
+		                    'action' => 'view',
+		                    'id' => $project->_id
+		            )
+		    ); ?>">
+		        <?php echo $project->_id . ": " . $project->name ?>
+		    </a>
+		</li>
+        <?php endforeach;?>
+    </ul>
+    <a href="/projects/new/" class="pill-btn black-btn">New Project</a>
+    <form>
+        <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/right_arrow_large.gif') ?>" class="navarrow" />
+        <label class="pagelabel">Page 1 of 1</label>
+        <img src="<?php echo $this->baseUrl('/media/site/img/content/icons/left_arrow_large.gif') ?>" class="navarrow" />
+    </form>
+</div>

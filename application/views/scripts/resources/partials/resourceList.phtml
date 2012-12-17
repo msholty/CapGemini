@@ -1,0 +1,11 @@
+<li>
+    <a href="<?php echo $this->url(
+            array(
+                    'controller' => 'resources',
+                    'action' => 'view',
+                    'id' => $this->id
+            )
+    ); ?>">
+        <?php echo $this->last_name . ", " . $this->first_name ?>
+    </a>
+</li>

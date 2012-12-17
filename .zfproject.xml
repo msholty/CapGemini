@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.12.0">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+        </controllerFile>
+        <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Projects">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+          <actionMethod actionName="view"/>
+          <actionMethod actionName="edit"/>
+          <actionMethod actionName="addBudget"/>
+          <actionMethod actionName="delete"/>
+        </controllerFile>
+        <controllerFile controllerName="Resources">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+          <actionMethod actionName="view"/>
+          <actionMethod actionName="edit"/>
+        </controllerFile>
+        <controllerFile controllerName="Financials">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="QA">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Opportunities">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Contracts">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+          <actionMethod actionName="view"/>
+          <actionMethod actionName="edit"/>
+        </controllerFile>
+        <controllerFile controllerName="Roles">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="new"/>
+          <actionMethod actionName="view"/>
+          <actionMethod actionName="edit"/>
+        </controllerFile>
+        <controllerFile controllerName="Reports">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+      </controllersDirectory>
+      <formsDirectory>
+        <formFile formName="Resource"/>
+        <formFile formName="Project"/>
+        <formFile formName="Budget"/>
+        <formFile formName="Contract"/>
+      </formsDirectory>
+      <layoutsDirectory>
+        <layoutScriptsDirectory>
+          <layoutScriptFile layoutName="layout"/>
+        </layoutScriptsDirectory>
+      </layoutsDirectory>
+      <modelsDirectory>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Resource"/>
+          <dbTableFile dbTableName="Project"/>
+          <dbTableFile dbTableName="ResourceType"/>
+          <dbTableFile dbTableName="ProjectPhase"/>
+          <dbTableFile dbTableName="ProjectStatus"/>
+          <dbTableFile dbTableName="ResourceTitle"/>
+          <dbTableFile dbTableName="BillingType"/>
+          <dbTableFile dbTableName="ContractType"/>
+          <dbTableFile dbTableName="Contract"/>
+        </dbTableDirectory>
+        <modelFile modelName="Resource"/>
+        <modelFile modelName="ResourceMapper"/>
+        <modelFile modelName="ProjectMapper"/>
+        <modelFile modelName="Project"/>
+        <modelFile modelName="ResourceType"/>
+        <modelFile modelName="ProjectPhase"/>
+        <modelFile modelName="ProjectStatus"/>
+        <modelFile modelName="ResourceTitle"/>
+        <modelFile modelName="Contract"/>
+        <modelFile modelName="BillingType"/>
+      </modelsDirectory>
+      <modulesDirectory>
+        <moduleDirectory moduleName="projects">
+          <configsDirectory enabled="false"/>
+          <controllersDirectory>
+            <controllerFile controllerName="Index">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+          </controllersDirectory>
+          <formsDirectory enabled="false"/>
+          <layoutsDirectory enabled="false">
+            <layoutScriptsDirectory enabled="false"/>
+          </layoutsDirectory>
+          <modelsDirectory/>
+          <servicesDirectory enabled="false"/>
+          <viewsDirectory>
+            <viewScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+            </viewScriptsDirectory>
+            <viewHelpersDirectory/>
+            <viewFiltersDirectory/>
+          </viewsDirectory>
+        </moduleDirectory>
+      </modulesDirectory>
+      <servicesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="Index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Resources">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Financials">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="QA">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Opportunities">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Resources">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="New"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Resources">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Resources">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="addBudget"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Resources">
+            <viewScriptFile forActionName="Edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Projects">
+            <viewScriptFile forActionName="delete"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Contracts">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Contracts">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Contracts">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Contracts">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Roles">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Roles">
+            <viewScriptFile forActionName="new"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Roles">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Roles">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Reports">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
+      <testApplicationDirectory>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile forControllerName="Index">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Projects">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+            <testApplicationActionMethod forActionName="view"/>
+            <testApplicationActionMethod forActionName="edit"/>
+            <testApplicationActionMethod forActionName="addBudget"/>
+            <testApplicationActionMethod forActionName="delete"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Resources">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+            <testApplicationActionMethod forActionName="view"/>
+            <testApplicationActionMethod forActionName="edit"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Financials">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="QA">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Opportunities">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Contracts">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+            <testApplicationActionMethod forActionName="view"/>
+            <testApplicationActionMethod forActionName="edit"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Roles">
+            <testApplicationActionMethod forActionName="index"/>
+            <testApplicationActionMethod forActionName="new"/>
+            <testApplicationActionMethod forActionName="view"/>
+            <testApplicationActionMethod forActionName="edit"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Reports">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
+        </testApplicationControllerDirectory>
+        <testApplicationModulesDirectory>
+          <testApplicationModuleDirectory forModuleName="projects">
+            <testApplicationControllerDirectory>
+              <testApplicationControllerFile forControllerName="Index">
+                <testApplicationActionMethod forActionName="index"/>
+              </testApplicationControllerFile>
+            </testApplicationControllerDirectory>
+          </testApplicationModuleDirectory>
+        </testApplicationModulesDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory/>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

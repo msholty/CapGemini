@@ -1,0 +1,15 @@
+<div class="body-container">
+	<label>Spade Id:</label> <?php echo $this->contract->spade_id ?><br>
+	<label>Start Date:</label> <?php echo $this->contract->start_date?><br>
+	<label>End Date:</label> <?php echo $this->contract->end_date ?><br>
+	<label>Purchase Order: </label> <?php echo $this->contract->purchase_order ?><br>
+	<label>Billing Type: <?php echo $this->contract->billing_type->value ?></label><br>
+	<label>Contract Number: </label><?php echo $this->contract->contract_number ?><br>
+	<label>Parent Contract Number: </label><?php echo $this->contract->parent_contract_number ?><br>
+	<label>Contract Type: </label><?php echo $this->contract->contract_type->value ?><br>
+	<label>Parent Project Name: </label><?php echo $this->contract->project->name ?><br>
+	<label>Date Created: </label><?php echo $this->contract->date_created ?><br>
+	<br>
+	<a href="/contracts/edit/id/<?php echo $this->contract->contract_id ?>" class="pill-btn black-btn">Edit</a>
+	<a href="/roles/new/cid/<?php echo $this->contract->contract_id ?>" class="pill-btn black-btn">New Role</a>
+</div>

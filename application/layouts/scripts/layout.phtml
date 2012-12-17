@@ -1,0 +1,15 @@
+<?php echo $this->doctype(); ?>
+<html>
+<?php echo $this->render('_pageHeader.phtml'); ?>
+<body>
+	<div id="wrapper">
+		<?php echo $this->render('_header.phtml'); ?>
+		<div id="content">
+			<div class="full-width-panel small-logo-panel clearfix">
+				<a id="small-logo" href="/">CapFiRe</a>
+			</div>
+			<?php echo $this->layout()->content; ?>
+		</div>
+	</div>
+</body>
+</html>

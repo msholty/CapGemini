@@ -1,0 +1,24 @@
+<?php if ($this->pageCount): ?>
+<nav class="dot-nav">
+	<ul>
+		<?php $x=0;?>
+		<?php while($x++ < $this->pageCount): ?>
+		<li><a class="hero-gallery <?php if($x==$this->current){ echo 'active'; }?>" href="/resources/page/<?php echo $x ?>"
+			onclick="">Profile Card Deck</a>
+		</li>
+		<?php endwhile; ?>
+	</ul>
+</nav>
+<nav class="paddle-nav">
+	<ul>
+		<?php if (isset($this->previous)): ?>
+		<li><a class="arrow prev hero-gallery" href="/resources/page/<?php echo ($this->current?$this->current-1:'1')?>" onclick=""><b>Previous</b>
+		</a></li>
+		<?php endif; ?>
+		<?php if (isset($this->next)): ?>
+		<li><a class="arrow next hero-gallery" href="/resources/page/<?php echo ($this->current+2)?>" onclick=""><b>Next</b>
+		</a></li>
+		<?php endif; ?>
+	</ul>
+</nav>
+<?php endif; ?>

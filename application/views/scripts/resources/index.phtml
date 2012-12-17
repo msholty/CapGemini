@@ -1,0 +1,21 @@
+<div class="body-container">
+	<div class="deck-pane">
+		<div id="card-deck">
+			<?php if (count($this->paginator)): ?>
+			<ul>
+				<?php foreach ($this->paginator as $resource): ?>
+				<?php echo $this->profileCard($resource); ?>
+				<?php endforeach; ?>
+			</ul>
+			<?php endif; ?>
+		</div>
+		<?php
+		echo $this->paginationControl(
+			$this->paginator,
+			'Sliding',
+            '/resources/partials/dot-nav.phtml'
+        );
+		?>
+	</div>
+	<a href="/resources/new/" class="pill-btn black-btn">New Resource</a>
+</div>
