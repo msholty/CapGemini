@@ -1,6 +1,4 @@
 <?php
-<<<<<<< HEAD
-
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
@@ -32,7 +30,4 @@ $application = new Zend_Application(
 );
 $application->bootstrap()
             ->run();
-=======
-echo 'hello world!';
 ?>
->>>>>>> 13cdbac045cbbc5a191e9b4d906c1ac44c36b37d
