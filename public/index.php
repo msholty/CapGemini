@@ -1,9 +1,9 @@
 <?php
-//echo realpath(dirname(__FILE__) . '/../application') . '<br>';
+echo realpath(dirname(__FILE__) . '/../application') . '<br>';
 // Define path to application directory
-/*defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));*/
-define('APPLICATION_PATH', '/.apps/http/__default__/0/1.0-zdc/application');
+defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+//define('APPLICATION_PATH', '/.apps/http/__default__/0/1.0-zdc/application');
 // Define application environment
 defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
