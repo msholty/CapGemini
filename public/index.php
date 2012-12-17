@@ -30,4 +30,4 @@ $application = new Zend_Application(
 );
 $application->bootstrap()
             ->run();
->>>>>>> 4efbf500fe6178a382eb0f629a1005d400a4d6a8
+?>
