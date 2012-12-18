@@ -2,22 +2,19 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-	protected function _initDoctype()
+	/*protected function _initDoctype()
 	{
 		$this->bootstrap('view');
 		$view = $this->getResource('view');
 		$view->doctype('XHTML1_STRICT');
-	}
+	}*/
 
-	/**
-	 * Initializes the Autoloader
-	 */
-	protected function _initAutoload()
+	/*protected function _initAutoload()
 	{
 		$autoloader = new Zend_Application_Module_Autoloader(
 				array(
 						'namespace' => 'Default',
-						'basePath'  => '/.apps/http/__default__/0/1.0-zdc/application',
+						'basePath'  => APPLICATION_PATH,
 						'resourceTypes' => array(
 								'module' => array(
 										'namespace' => 'module_',
@@ -27,15 +24,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				)
 		);
 		return $autoloader;
-	}
+	}*/
 
-	/**
-	 * Set up the view helpers to use the "Default" namespace.
-	 * @return null
-	 */
 	protected function _initDefaultViewHelpers()
 	{
-		/* @var $view Zend_View */
 		$view = $this->bootstrap('view')->getResource('view');
 		$view->addHelperPath(
 				APPLICATION_PATH . '/views/helpers',
@@ -43,15 +35,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		);
 	}
 
-	/**
-	 * Init default controller action helpers
-	 */
-	protected function _initDefaultControllerActionHelpers()
+	/*protected function _initDefaultControllerActionHelpers()
 	{
 		Zend_Controller_Action_HelperBroker::addPath('controllers/helpers');
-	}
+	}*/
 
-	protected function _initRouter()
+	/*protected function _initRouter()
 	{
 		// Get Front Controller Instance
 		$front = Zend_Controller_Front::getInstance();
@@ -82,6 +71,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		);
 
 		$router->addRoute('projects', $route);
-	}
+	}*/
 }
 
