@@ -48,17 +48,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// Get Router
 		$router = $front->getRouter();
 
-		$route = new Zend_Controller_Router_Route(
-				'capfire/:controller/',
-				array(
-						'module' 	=> 'default',
-						'controller' => 'financials',
-						'action'	=> 'index'
-				)
-		);
-
-		$router->addRoute('financials', $route);
-
 		//id = resource._id in database
 		$route = new Zend_Controller_Router_Route(
 				'capfire/resources/page/:page',
