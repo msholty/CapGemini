@@ -1,7 +1,7 @@
 <?php
 class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 {
-	public function profileCard($resource)
+	public function profileCard($resource, $baseUrl)
 	{
 		$html = <<<HTML
 	<div class="card-container">
@@ -42,7 +42,7 @@ class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 				<div class="widget-subsection card-footer">
 					<a
 						class="white-btn pill-btn get_prompt from_static everyday_activities"
-						href="/resources/view/id/{$resource->_id}/">View Profile</a>
+						href="{$baseUrl}/resources/view/id/{$resource->_id}/">View Profile</a>
 				</div>
 
 			</div>
