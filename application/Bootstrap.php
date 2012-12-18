@@ -56,7 +56,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		//id = resource._id in database
 		$route = new Zend_Controller_Router_Route(
-				'capfire/resources/page/:page',
+				'resources/page/:page',
 				array(
 						'module'	 => 'default',
 						'controller' => 'resources',
@@ -68,7 +68,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		//id = project.id in database
 		$route = new Zend_Controller_Router_Route(
-				'capfire/projects/page/:page',
+				'projects/page/:page',
 				array(
 						'module'	 => 'default',
 						'controller' => 'projects',

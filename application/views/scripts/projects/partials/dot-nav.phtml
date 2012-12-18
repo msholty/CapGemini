@@ -12,7 +12,7 @@
 <nav class="paddle-nav">
 	<ul>
 		<?php if (isset($this->previous)): ?>
-		<li><a class="arrow prev hero-gallery" href="/projects/page/<?php echo ($this->current?$this->current-1:'1')?>" onclick=""><b>Previous</b>
+		<li><a class="arrow prev hero-gallery" href="<?php echo $this->view->baseUrl() ?>/projects/page/<?php echo ($this->current?$this->current-1:'1')?>" onclick=""><b>Previous</b>
 		</a></li>
 		<?php endif; ?>
 		<?php if (isset($this->next)): ?>
