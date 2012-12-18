@@ -2,14 +2,14 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-	/*protected function _initDoctype()
+	protected function _initDoctype()
 	{
 		$this->bootstrap('view');
 		$view = $this->getResource('view');
 		$view->doctype('XHTML1_STRICT');
-	}*/
+	}
 
-	/*protected function _initAutoload()
+	protected function _initAutoload()
 	{
 		$autoloader = new Zend_Application_Module_Autoloader(
 				array(
@@ -24,7 +24,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				)
 		);
 		return $autoloader;
-	}*/
+	}
 
 	protected function _initDefaultViewHelpers()
 	{
@@ -35,12 +35,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		);
 	}
 
-	/*protected function _initDefaultControllerActionHelpers()
+	protected function _initDefaultControllerActionHelpers()
 	{
 		Zend_Controller_Action_HelperBroker::addPath('controllers/helpers');
-	}*/
+	}
 
-	/*protected function _initRouter()
+	protected function _initRouter()
 	{
 		// Get Front Controller Instance
 		$front = Zend_Controller_Front::getInstance();
@@ -71,6 +71,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		);
 
 		$router->addRoute('projects', $route);
-	}*/
+	}
 }
 
