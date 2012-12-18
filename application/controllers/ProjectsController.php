@@ -28,7 +28,7 @@ class ProjectsController extends Zend_Controller_Action
     public function newAction()
     {
         $form = new Application_Form_Project(array(
-            'action' => '/projects/new/',
+            'action' => $this->baseUrl('/projects/new/'),
             'submitLabel' => 'Save'
         ));
 
