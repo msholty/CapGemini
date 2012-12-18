@@ -2,12 +2,11 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
-<<<<<<< HEAD
 	protected function _initDoctype()
 	{
-		/*$this->bootstrap('view');
+		$this->bootstrap('view');
 		$view = $this->getResource('view');
-		$view->doctype('XHTML1_STRICT');*/
+		$view->doctype('XHTML1_STRICT');
 	}
 
 	/**
@@ -84,9 +83,5 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		$router->addRoute('projects', $route);
 	}
-=======
-
-
->>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
 }
 
