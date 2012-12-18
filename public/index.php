@@ -30,4 +30,3 @@ $application->bootstrap()
             ->run();
 echo 'done';
 ?>
-git remote add zendcloud https://capgemini@capgemini.my.phpcloud.com/git/capfire.git
