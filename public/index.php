@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 //echo realpath(dirname(__FILE__) . '/../application') . '<br>';
 // Define path to application directory
 defined('APPLICATION_PATH')
@@ -21,13 +22,38 @@ set_include_path(
 );
 /** Zend_Application */
 require_once 'Zend/Application.php';
+=======
+
+// Define path to application directory
+defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+
+// Define application environment
+defined('APPLICATION_ENV')
+    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+
+// Ensure library/ is on include_path
+set_include_path(implode(PATH_SEPARATOR, array(
+    realpath(APPLICATION_PATH . '/../library'),
+    get_include_path(),
+)));
+
+/** Zend_Application */
+require_once 'Zend/Application.php';
+
+>>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
 // Create application, bootstrap, and run
 $application = new Zend_Application(
     APPLICATION_ENV,
     APPLICATION_PATH . '/configs/application.ini'
 );
+<<<<<<< HEAD
 echo '$application->bootstrap()->run()';
 $application->bootstrap()
             ->run();
 echo 'done';
 ?>
+=======
+$application->bootstrap()
+            ->run();
+>>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e

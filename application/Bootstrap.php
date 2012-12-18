@@ -2,6 +2,7 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+<<<<<<< HEAD
 	protected function _initDoctype()
 	{
 		/*$this->bootstrap('view');
@@ -83,5 +84,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		$router->addRoute('projects', $route);
 	}
+=======
+
+
+>>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
 }
 

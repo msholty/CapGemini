@@ -7,7 +7,11 @@ class ErrorController extends Zend_Controller_Action
     {
         $errors = $this->_getParam('error_handler');
         
+<<<<<<< HEAD
         if (!$errors || !$errors instanceof ArrayObject) {
+=======
+        if (!$errors) {
+>>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
             $this->view->message = 'You have reached the error page';
             return;
         }
@@ -32,7 +36,11 @@ class ErrorController extends Zend_Controller_Action
         // Log exception, if logger available
         if ($log = $this->getLog()) {
             $log->log($this->view->message, $priority, $errors->exception);
+<<<<<<< HEAD
             $log->log('Request Parameters', $priority, $errors->request->getParams());
+=======
+            $log->log('Request Parameters', $priority, $request->getParams());
+>>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
         }
         
         // conditionally display exceptions
