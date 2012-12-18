@@ -33,7 +33,7 @@ class ResourcesController extends Zend_Controller_Action
 		// action body
 		$form = new Application_Form_Resource(
 				array(
-						'action' => $this->baseUrl() . '/resources/new/',
+						'action' => $this->view->baseUrl('/resources/new/'),
 						'submitLabel' => 'Save'
 				));
 
