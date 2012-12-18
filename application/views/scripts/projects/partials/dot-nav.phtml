@@ -16,7 +16,7 @@
 		</a></li>
 		<?php endif; ?>
 		<?php if (isset($this->next)): ?>
-		<li><a class="arrow next hero-gallery" href="/projects/page/<?php echo ($this->current?$this->current+1:'2')?>" onclick=""><b>Next</b>
+		<li><a class="arrow next hero-gallery" href="<?php echo $this->view->baseUrl() ?>/projects/page/<?php echo ($this->current?$this->current+1:'2')?>" onclick=""><b>Next</b>
 		</a></li>
 		<?php endif; ?>
 	</ul>
