@@ -8,6 +8,10 @@ class ProjectsController extends Zend_Controller_Action
 
     public function indexAction()
     {
+    	$connection_string = 'mongodb://drawman:drawing1@linus.mongohq.com:10053/capfire';
+    	$connection = new Shanty_Mongo_Connection($connection_string);
+    	Shanty_Mongo::addMaster($connection);
+
     	//TODO: get the page number from the url
     	$page = $this->getRequest()->getParam('page');
 
