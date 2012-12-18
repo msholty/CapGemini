@@ -1,4 +1,5 @@
 <?php
+echo 'test';
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
@@ -25,8 +26,8 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     APPLICATION_PATH . '/configs/application.ini'
 );
-echo '$application->bootstrap()->run()';
+//echo '$application->bootstrap()->run()';
 $application->bootstrap()
             ->run();
-echo 'done';
+//echo 'done';
 ?>
