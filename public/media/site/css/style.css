@@ -172,7 +172,9 @@ nav>div>ul li:first-child a {
 }
 
 #nav_search button {
-	background: url("capfire/media/site/img/content/master-sprite.png?v080612")
+	background: url("/media/site/img/content/master-sprite.png?v080612")
+		-554px -20px;
+	background: url("/capfire/media/site/img/content/master-sprite.png?v080612")
 		-554px -20px;
 	text-indent: -9999px;
 	width: 17px;
@@ -231,7 +233,8 @@ input,textarea {
 
 #big-logo,#small-logo,.feed-icon::before,.feed-icon-nobefore,.star-icon::before,.fito-icon::before,.leaders-icon::before,.group-icon::before,.science-icon::before,.achievement-icon::before,.challenge-icon::before,.wrench-icon::before,.network-icon::before,.title-icon::before,.single-sword-icon::before,.crossed-swords-icon::before,.male-icon::before,.female-icon::before,.invite-icon::before,.hero-icon::before,.question-mark-icon::before,.x-icon::before,.chevron-icon::before,.fb-icon::before,.twitter-icon::before,.rk-icon::before,.email-icon::before,.mobile-icon::before,.propped::before,.pr::before,.remove-link::after,.small-cross::before,.unlocked-icon::before,.ellipses-icon::before,.smiley-icon::before,.weight-icon::before,.pencil-icon::before,.notification-icon::before,.google-icon::before,.winner div::before,.loser div::before,.expand-view::before,.view-post-icon::before,.strike-circle-icon::before,.checkmark-icon::before,.tumblr-icon::before,.heart-icon::before,.add-item-icon::before,.copy-item-icon::before,.remove-item-icon::before,.cross-icon::before
 	{
-	background: url("capfire/media/site/img/content/title-bar/capgemini-small.png");
+	background: url("/media/site/img/content/title-bar/capgemini-small.png");
+	background: url("/capfire/media/site/img/content/title-bar/capgemini-small.png");
 	content: "";
 	display: block;
 }
