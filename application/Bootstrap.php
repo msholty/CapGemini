@@ -9,6 +9,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->doctype('XHTML1_STRICT');
 	}
 
+	protected function _initDatabase() {
+		$connection_string = 'mongodb://drawman:drawing1@linus.mongohq.com:10060/Capgemini';
+		$connection = new Shanty_Mongo_Connection($connection_string);
+		Shanty_Mongo::addMaster($connection);
+	}
+
 	protected function _initAutoload()
 	{
 		$autoloader = new Zend_Application_Module_Autoloader(
