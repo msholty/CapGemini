@@ -2,7 +2,7 @@
  * lookup the person for the field.
  */
 var myWindow;
-var extra = 'capfire';
+var extra = '/capfire';
 
 function lookup(w, h, textbox_id, type) {
 	var left = (screen.width / 2) - (w / 2);
@@ -137,7 +137,7 @@ function loadProjectAjax(controller, action, content) {
 
 		$.ajax({
 			type : 'POST',
-			url : window.location.host + '/' extra + '/' + controller + '/' + action + '/',
+			url : 'http://' + window.location.host + extra + '/' + controller + '/' + action + '/',
 			async : true,
 			data : {
 				projectID : projectID
