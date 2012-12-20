@@ -43,7 +43,12 @@ function select_global_nav() {
 }
 
 function select_dot_nav() {
-	var nav_links = document.getElementsByClassName('dot-nav')[0].getElementsByTagName('a');
+	var dotnav = document.getElementsByClassName('dot-nav')[0];
+	if (!dotnav) {
+		return;
+	}
+	var nav_links = document.getElementsByClassName('dot-nav')[0]
+			.getElementsByTagName('a');
 	var selected = location.pathname;
 
 	for ( var i = 0; i < nav_links.length; i++) {
@@ -59,23 +64,25 @@ function select_dot_nav() {
 }
 
 function parseHash() {
-    // retrieve target page from URL:
-    var page = window.location.hash.split("#")[1];
-    alert(page);
+	// retrieve target page from URL:
+	var page = window.location.hash.split("#")[1];
+	// alert(page);
 
-    // assuming you have a div with id "content"
-    $("#card-deck").fadeOut("slow", function() { // executed when animation complete
-         $("#card-deck").empty();
-         $("#card-deck").load("/"+page,function(response, status, x) {
-              if(status=="error") $("#card-deck").load('/404');
-              $("#card-deck").fadeIn("slow"); // bring it back in
-         });
-    });
+	// assuming you have a div with id "content"
+	$("#card-deck").fadeOut("slow", function() { // executed when animation
+													// complete
+		$("#card-deck").empty();
+		$("#card-deck").load("/" + page, function(response, status, x) {
+			if (status == "error")
+				$("#card-deck").load('/404');
+			$("#card-deck").fadeIn("slow"); // bring it back in
+		});
+	});
 }
 
-/*function parseHash() {
-	alert('parshHash');
-}*/
+/*
+ * function parseHash() { alert('parshHash'); }
+ */
 
 $(function() {
 	select_global_nav();
@@ -86,13 +93,60 @@ $(document).ready(function() {
 	if (window.location.hash) { // Batteries included?!
 		parseHash(); // Tweedle-dee
 	}
-	window.onhashchange=function() {
+	window.onhashchange = function() {
 		// implemented elsewhere:
 		parseHash(); // Tweedle-dum
 	};
 });
 
-/******* jQueryUI stuff ********/
+/** ***** jQueryUI stuff ******* */
+/*
+ * $(function() { $( "#tabs" ).tabs(); });
+ */
+
+/** ***** nav jscript ****** */
 $(function() {
-    $( "#tabs" ).tabs();
+	$('#project-ajax-people').click(function(e) {
+		loadXMLDoc('project-ajax-people', 'project-content');
+	});
+	$('#project-ajax-roles').click(function(e) {
+		loadXMLDoc('project-ajax-roles', 'project-content');
+	});
+	$('#proejct-ajax-budget').click(function(e) {
+		loadXMLDoc('project-ajax-budget', 'project-content');
+	});
+	$('#project-ajax-contracts').click(function(e) {
+		loadXMLDoc('project-ajax-contracts', 'project-content');
+	});
 });
+
+function loadXMLDoc(element, content) {
+	$(function() {
+		var location = window.location.toString();
+		var split = location.split('/');
+		var id = split[6];
+		var projectID = id;
+
+		if(id.indexOf('#') >= 0 ) {
+			projectID = id.substr(0,id.indexOf('#'));
+		}
+
+		$.ajax({
+			type : 'POST',
+			url : '/projects/ajax-people',
+			async : true,
+			data : {
+				projectID : projectID
+			},
+			success : function(data) {
+				//alert('success');
+			},
+			error : function(data) {
+				//alert(data);
+			}
+		}).done(function(data) {
+			document.getElementById(content).innerHTML = data;
+		});
+		return false;
+	});
+}
