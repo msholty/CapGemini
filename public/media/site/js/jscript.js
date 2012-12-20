@@ -138,6 +138,7 @@ $(function() {
 
 function loadAjax(controller, action, content) {
 	$(function() {
+		document.getElementById(content).innerHTML = '<div id="ajax-container"><img id="ajax" src="https://s3.amazonaws.com/Capgemini/Avatars/ajax-loader.gif"/></div>';
 		// get id of project
 		var location = window.location.toString();
 		var split = location.split('/');
