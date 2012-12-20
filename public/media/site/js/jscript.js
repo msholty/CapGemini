@@ -107,31 +107,45 @@ $(document).ready(function() {
 
 /** ***** nav jscript ****** */
 $(function() {
+	// Project tabs
 	$('#project-ajax-people').click(function(e) {
-		loadProjectAjax('projects', 'ajax-people', 'project-content');
+		loadAjax('projects', 'ajax-people', 'project-content');
 	});
 	$('#project-ajax-roles').click(function(e) {
-		loadProjectAjax('projects', 'ajax-roles', 'project-content');
+		loadAjax('projects', 'ajax-roles', 'project-content');
 	});
 	$('#proejct-ajax-budget').click(function(e) {
-		loadProjectAjax('projects', 'ajax-budget', 'project-content');
+		loadAjax('projects', 'ajax-budget', 'project-content');
 	});
 	$('#project-ajax-contracts').click(function(e) {
-		loadProjectAjax('projects', 'ajax-contracts', 'project-content');
+		loadAjax('projects', 'ajax-contracts', 'project-content');
+	});
+
+	// Resource tabs
+	$('#profile-ajax-contact-information').click(function(e) {
+		loadAjax('resources', 'ajax-contact-information', 'profile-content');
+	});
+	$('#profile-ajax-projects').click(function(e) {
+		loadAjax('resources', 'ajax-projects', 'profile-content');
+	});
+	$('#profile-ajax-skills').click(function(e) {
+		loadAjax('resources', 'ajax-skills', 'profile-content');
+	});
+	$('#project-ajax-more-information').click(function(e) {
+		loadAjax('resources', 'ajax-more-information', 'profile-content');
 	});
 });
 
-
-function loadProjectAjax(controller, action, content) {
+function loadAjax(controller, action, content) {
 	$(function() {
 		// get id of project
 		var location = window.location.toString();
 		var split = location.split('/');
 
-		split.forEach(function(value, index, array){
-		    if(value == 'id') {
-		    	id = split[index+1];
-		    }
+		split.forEach(function(value, index, array) {
+			if (value == 'id') {
+				id = split[index + 1];
+			}
 		});
 
 		var projectID = id;
@@ -140,28 +154,22 @@ function loadProjectAjax(controller, action, content) {
 			projectID = id.substr(0, id.indexOf('#'));
 		}
 
-		//alert(projectID);
-
-		// alert(window.location.host);
-
-		$.ajax(
-				{
-					type : 'POST',
-					url : 'http://' + window.location.host + extra + '/'
-							+ controller + '/' + action + '/',
-					async : true,
-					data : {
-						projectID : projectID
-					},
-					success : function(data) {
-						// alert('success');
-					},
-					error : function(data) {
-						// alert(data);
-					}
-				}).done(function(data) {
-			document.getElementById(content).innerHTML = data;
+		alert('http://' + window.location.host + extra + '/' + controller
+					+ '/' + action + '/');
+		$.ajax({
+			type : 'POST',
+			url : 'http://' + window.location.host + extra + '/' + controller
+					+ '/' + action + '/',
+			async : true,
+			data : {
+				projectID : projectID
+			},
+			success : function(data) {
+				document.getElementById(content).innerHTML = data;
+			},
+			error : function(data) {
+				alert('There was an error sending your request.');
+			}
 		});
-		return false;
 	});
 }

@@ -8,7 +8,7 @@ class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 		<div class="card track-card everyday_activities flippy">
 			<div class="card-front widget">
 				<div class="widget-subsection card-splash-image">
-					<img src="/media/site/img/content/test/ted.jpg">
+					<img src="https://s3.amazonaws.com/Capgemini/Avatars/ted.jpg">
 				</div>
 
 				<div class="widget-subsection card-title">
@@ -42,7 +42,7 @@ class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 				<div class="widget-subsection card-footer">
 					<a
 						class="white-btn pill-btn get_prompt from_static everyday_activities"
-						href="{$baseUrl}/resources/view/id/{$resource->_id}/">View Profile</a>
+						href="{$baseUrl}/resources/view/id/{$resource->_id}">View Profile</a>
 				</div>
 
 			</div>

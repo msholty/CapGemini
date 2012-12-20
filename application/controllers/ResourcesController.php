@@ -135,6 +135,12 @@ class ResourcesController extends Zend_Controller_Action
 		// action body
 	}
 
+	public function ajaxContactInformationAction() {
+		$this->_helper->layout->disableLayout();
+		$data = $this->_request->getPost();
+		$resource = Application_Model_Document_Resource::find($data['projectID']);
+		$this->view->resource = $resource;
+	}
 
 }
 
