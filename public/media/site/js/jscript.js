@@ -71,7 +71,7 @@ function parseHash() {
 
 	// assuming you have a div with id "content"
 	$("#card-deck").fadeOut("slow", function() { // executed when animation
-													// complete
+		// complete
 		$("#card-deck").empty();
 		$("#card-deck").load("/" + page, function(response, status, x) {
 			if (status == "error")
@@ -121,34 +121,45 @@ $(function() {
 	});
 });
 
+
 function loadProjectAjax(controller, action, content) {
 	$(function() {
-		//get id of project
+		// get id of project
 		var location = window.location.toString();
 		var split = location.split('/');
-		var id = split[6];
+
+		split.forEach(function(value, index, array){
+		    if(value == 'id') {
+		    	id = split[index+1];
+		    }
+		});
+
 		var projectID = id;
 
-		if(id.indexOf('#') >= 0 ) {
-			projectID = id.substr(0,id.indexOf('#'));
+		if (id.indexOf('#') >= 0) {
+			projectID = id.substr(0, id.indexOf('#'));
 		}
 
-		//alert(window.location.host);
+		//alert(projectID);
 
-		$.ajax({
-			type : 'POST',
-			url : 'http://' + window.location.host + extra + '/' + controller + '/' + action + '/',
-			async : true,
-			data : {
-				projectID : projectID
-			},
-			success : function(data) {
-				//alert('success');
-			},
-			error : function(data) {
-				//alert(data);
-			}
-		}).done(function(data) {
+		// alert(window.location.host);
+
+		$.ajax(
+				{
+					type : 'POST',
+					url : 'http://' + window.location.host + extra + '/'
+							+ controller + '/' + action + '/',
+					async : true,
+					data : {
+						projectID : projectID
+					},
+					success : function(data) {
+						// alert('success');
+					},
+					error : function(data) {
+						// alert(data);
+					}
+				}).done(function(data) {
 			document.getElementById(content).innerHTML = data;
 		});
 		return false;
