@@ -133,7 +133,7 @@ function loadProjectAjax(controller, action, content) {
 			projectID = id.substr(0,id.indexOf('#'));
 		}
 
-		alert(window.location.host);
+		//alert(window.location.host);
 
 		$.ajax({
 			type : 'POST',
