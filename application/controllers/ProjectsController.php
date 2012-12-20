@@ -180,11 +180,33 @@ class ProjectsController extends Zend_Controller_Action
 		$data = $this->_request->getPost();
 		$project = Application_Model_Document_Project::find($data['projectID']);
 		$this->view->project = $project;
-		$this->view->data = $data;
 	}
 
 	public function ajaxContractsAction() {
+		$this->_helper->layout->disableLayout();
+		$data = $this->_request->getPost();
+		$project = Application_Model_Document_Project::find($data['projectID']);
+		$this->view->project = $project;
 
+		$sow = $project->sow;
+		$change_orders = $project->change_orders;
+		$final_end_date = $sow->end_date;
+		if(!is_null($change_orders)) {
+			foreach($change_orders as $c) {
+				$end_date_str = strtotime($c->end_date);
+				$final_end_date_str = strtotime($final_end_date);
+
+				if($end_date_str > $final_end_date_str) {
+					$final_end_date = $c->end_date;
+				}
+			}
+		}
+		else {
+			$final_end_date = strtotime($sow->end_date);
+		}
+
+		$this->view->end_date = $final_end_date;
+		$this->view->change_orders = $change_orders;
 	}
 }
 

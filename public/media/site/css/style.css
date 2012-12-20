@@ -1032,7 +1032,7 @@ body.responsive .paddle-nav li .arrow b {
 }
 
 .hero-panel .right {
-	width: 639px;
+	/*width: 639px;*/
 	position: relative;
 }
 
@@ -1155,12 +1155,13 @@ body.responsive .paddle-nav li .arrow b {
 	padding-right: 10px;
 }
 /******** View Project *******/
-#project-hero-panel .left,#project-hero-panel .right {
+#project-hero-panel .left {
 	height: 250px;
+	width: 250px;
 }
 
-.hero-panel .left {
-	width: 250px;
+#project-hero-panel .right {
+
 }
 
 #project-hero-panel .left img {
@@ -1173,7 +1174,7 @@ body.responsive .paddle-nav li .arrow b {
 }
 
 .hero-panel .right {
-	width: 639px;
+	/*width: 639px;*/
 	position: relative;
 }
 
@@ -1287,7 +1288,7 @@ a:link,a:visited,a:active {
 	position: relative;
 	-webkit-transition: background-color, border-color .3s;
 	font-family: "Bariol", Helvetica, Arial, sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	height:93px;
 }
 

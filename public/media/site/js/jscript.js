@@ -2,6 +2,7 @@
  * lookup the person for the field.
  */
 var myWindow;
+var extra = 'capfire';
 
 function lookup(w, h, textbox_id, type) {
 	var left = (screen.width / 2) - (w / 2);
@@ -107,21 +108,22 @@ $(document).ready(function() {
 /** ***** nav jscript ****** */
 $(function() {
 	$('#project-ajax-people').click(function(e) {
-		loadXMLDoc('project-ajax-people', 'project-content');
+		loadProjectAjax('projects', 'ajax-people', 'project-content');
 	});
 	$('#project-ajax-roles').click(function(e) {
-		loadXMLDoc('project-ajax-roles', 'project-content');
+		loadProjectAjax('projects', 'ajax-roles', 'project-content');
 	});
 	$('#proejct-ajax-budget').click(function(e) {
-		loadXMLDoc('project-ajax-budget', 'project-content');
+		loadProjectAjax('projects', 'ajax-budget', 'project-content');
 	});
 	$('#project-ajax-contracts').click(function(e) {
-		loadXMLDoc('project-ajax-contracts', 'project-content');
+		loadProjectAjax('projects', 'ajax-contracts', 'project-content');
 	});
 });
 
-function loadXMLDoc(element, content) {
+function loadProjectAjax(controller, action, content) {
 	$(function() {
+		//get id of project
 		var location = window.location.toString();
 		var split = location.split('/');
 		var id = split[6];
@@ -131,9 +133,11 @@ function loadXMLDoc(element, content) {
 			projectID = id.substr(0,id.indexOf('#'));
 		}
 
+		alert(window.location.host);
+
 		$.ajax({
 			type : 'POST',
-			url : '/projects/ajax-people',
+			url : window.location.host + '/' extra + '/' + controller + '/' + action + '/',
 			async : true,
 			data : {
 				projectID : projectID
