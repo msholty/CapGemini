@@ -154,8 +154,6 @@ function loadAjax(controller, action, content) {
 			projectID = id.substr(0, id.indexOf('#'));
 		}
 
-		alert('http://' + window.location.host + extra + '/' + controller
-					+ '/' + action + '/');
 		$.ajax({
 			type : 'POST',
 			url : 'http://' + window.location.host + extra + '/' + controller
