@@ -3,7 +3,7 @@
 	<ul>
 		<?php $x=0;?>
 		<?php while($x++ < $this->pageCount): ?>
-		<li><a class="hero-gallery <?php if($x==$this->current){ echo 'active'; }?>" href="/resources/page/<?php echo $x ?>"
+		<li><a class="hero-gallery <?php if($x==$this->current){ echo 'active'; }?>" href="<?php echo $this->baseUrl('/resources/page/' . $x) ?>"
 			onclick="">Profile Card Deck</a>
 		</li>
 		<?php endwhile; ?>
@@ -12,11 +12,11 @@
 <nav class="paddle-nav">
 	<ul>
 		<?php if (isset($this->previous)): ?>
-		<li><a class="arrow prev hero-gallery" href="/resources/page/<?php echo ($this->current?$this->current-1:'1')?>" onclick=""><b>Previous</b>
+		<li><a class="arrow prev hero-gallery" href="<?php echo $this->baseUrl('/resources/page/' . ($this->current?$this->current-1:'1'))?>" onclick=""><b>Previous</b>
 		</a></li>
 		<?php endif; ?>
 		<?php if (isset($this->next)): ?>
-		<li><a class="arrow next hero-gallery" href="/resources/page/<?php echo ($this->current?$this->current+1:'2')?>" onclick=""><b>Next</b>
+		<li><a class="arrow next hero-gallery" href="<?php echo $this->baseUrl('/resources/page/' . ($this->current?$this->current+1:'2'))?>" onclick=""><b>Next</b>
 		</a></li>
 		<?php endif; ?>
 	</ul>
