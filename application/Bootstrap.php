@@ -10,7 +10,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	}
 
 	protected function _initDatabase() {
-		$connection_string = 'mongodb://drawman:drawing1@linus.mongohq.com:10060/Capgemini';
+		$connection_string = 'mongodb://capgemini:capgemini@linus.mongohq.com:10053/Capgemini';
 		$connection = new Shanty_Mongo_Connection($connection_string);
 		Shanty_Mongo::addMaster($connection);
 	}

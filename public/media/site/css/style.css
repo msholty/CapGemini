@@ -2,7 +2,7 @@
 
 #ajax-container {
 	position: relative;
-	width:100%;
+	width: 100%;
 	height: 25%;
 }
 
@@ -984,7 +984,7 @@ body.responsive .paddle-nav li .arrow {
 	padding: 0 18px;
 	-moz-opacity: 0;
 	opacity: 0;
-	filter: alpha(opacity =                         0);
+	filter: alpha(opacity =                           0);
 	outline: none;
 	z-index: 1;
 	cursor: pointer;
@@ -1009,7 +1009,7 @@ body.responsive .paddle-nav li .arrow b {
 .paddle-nav li .arrow:hover {
 	-moz-opacity: 1;
 	opacity: 1;
-	filter: alpha(opacity =                         100);
+	filter: alpha(opacity =                           100);
 }
 
 /********* View Profile ********/
@@ -1043,8 +1043,7 @@ body.responsive .paddle-nav li .arrow b {
 	height: 318px;
 }
 
-.hero-panel .right {
-	/*width: 639px;*/
+.hero-panel .right { /*width: 639px;*/
 	position: relative;
 }
 
@@ -1185,8 +1184,7 @@ body.responsive .paddle-nav li .arrow b {
 	padding: 20px 30px;
 }
 
-.hero-panel .right {
-	/*width: 639px;*/
+.hero-panel .right { /*width: 639px;*/
 	position: relative;
 }
 
@@ -1301,7 +1299,7 @@ a:link,a:visited,a:active {
 	-webkit-transition: background-color, border-color .3s;
 	font-family: "Bariol", Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	height:93px;
+	height: 93px;
 }
 
 .clearfix {
@@ -1323,7 +1321,7 @@ a:link,a:visited,a:active {
 
 .page_browser_unit_text {
 	width: 140px;
-	vertical-align:middle;
+	vertical-align: middle;
 }
 
 ._6b {
@@ -1338,6 +1336,12 @@ a:link,a:visited,a:active {
 
 /****** content project pane *******/
 #project-content {
+	float: right;
+	width: 640px;
+	height: 600px;
+}
+
+#profile-content {
 	float: right;
 	width: 640px;
 	height: 600px;

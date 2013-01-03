@@ -10,7 +10,7 @@
 
 	<div class="right">
 		<h1 class="main-content-section-title">
-			<?php echo $this->resource->name->first . ' ' . $this->resource->name->last ?>
+			<?php echo $this->resource->first . ' ' . $this->resource->last ?>
 		</h1>
 		<h2>
 			<?php echo $this->resource->title->value ?>
@@ -19,7 +19,7 @@
 			<?php echo $this->phoneNumber($this->resource->phone_number) ?>
 		</h3>
 		<h3>
-			Anjan Aluru
+			<?php echo $this->resource->people_manager?>
 		</h3>
 	</div>
 </div>

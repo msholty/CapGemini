@@ -13,13 +13,13 @@ class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 
 				<div class="widget-subsection card-title">
 					<div class="content">
-						<span>{$resource->name->first} {$resource->name->last}</span>
+						<span>{$resource->first} {$resource->last}</span>
 					</div>
 				</div>
 
 				<div class="widget-subsection card-footer">
-					<span class="emphasis">{$resource->title->value}</span> US East<br>
-					<span class="emphasis">{$resource->phoneNumber}</span> Test
+					<span class="emphasis">Role</span> {$resource->project_role} <br>
+					<span class="emphasis"></span> {$resource->current_sow}
 				</div>
 
 			</div>
@@ -28,13 +28,13 @@ class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 				<div class="widget-subsection card-exercise-list">
 					<ul>
 						<li>Resource Type
-							<div class="secondary">{$resource->resource_type->value}</div>
+							<div class="secondary">{$resource->resource_type_text}</div>
 						</li>
 						<li>Location
-							<div class="secondary">Orlando</div>
+							<div class="secondary">{$resource->office_base}</div>
 						</li>
 						<li>Email
-							<div class="secondary">{$resource->email}</div>
+							<div class="secondary">{$resource->email_capgemini}</div>
 						</li>
 					</ul>
 				</div>
