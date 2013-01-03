@@ -2,7 +2,7 @@
 class Application_Model_Document_Project extends Shanty_Mongo_Document
 {
 	protected static $_db = 'Capgemini';
-	protected static $_collection = 'Projects';
+	protected static $_collection = 'Project';
 
 	protected static $_requirements = array(
 			'name' => 'Required',
