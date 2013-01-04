@@ -165,6 +165,8 @@ function loadAjax(controller, action, content) {
 			},
 			success : function(data) {
 				document.getElementById(content).innerHTML = data;
+				alert('http://' + window.location.host + extra + '/' + controller
+					+ '/' + action + '/');
 			},
 			error : function(data) {
 				alert('http://' + window.location.host + extra + '/' + controller
