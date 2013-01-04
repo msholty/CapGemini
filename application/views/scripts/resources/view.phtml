@@ -1,22 +1,18 @@
 <div class="hero-panel" id="profile-hero-panel">
 	<div class="left">
 		<img alt=""
-			src="https://s3.amazonaws.com/Capgemini/Avatars/msholty.jpg"
-		<!--<form method="POST" enctype="multipart/form-data">
-					Please upload a profile picture: <input type="file" name="pic" /> <input
-						type="submit" />
-				</form>-->
+			src="https://s3.amazonaws.com/Capgemini/Avatars/ted.jpg">
 	</div>
 
 	<div class="right">
 		<h1 class="main-content-section-title">
-			<?php echo $this->resource->first . ' ' . $this->resource->last ?>
+			<?php echo $this->resource->name->first . ' ' . $this->resource->name->last?>
 		</h1>
 		<h2>
 			<?php echo $this->resource->title->value ?>
 		</h2>
 		<h3>
-			<?php echo $this->phoneNumber($this->resource->phone_number) ?>
+			<?php echo $this->phoneNumber($this->resource->phone->capgemini) ?>
 		</h3>
 		<h3>
 			<?php echo $this->resource->people_manager?>
@@ -41,7 +37,7 @@
 
 	<li id="stat-level">
 		<div class="li-container">
-			<div class="stat-value">2202787</div>
+			<div class="stat-value"><?php echo $this->resource->upn; ?></div>
 			<div class="stat-label">UPN</div>
 		</div>
 	</li>
@@ -56,7 +52,7 @@
 
 	<li id="stat-level">
 		<div class="li-container">
-			<div class="stat-value">Onshore</div>
+			<div class="stat-value"><?php echo $this->location_type ?></div>
 			<div class="stat-label">Location</div>
 		</div>
 	</li>
@@ -68,5 +64,5 @@
 		<?php echo $this->profileNavigation() ?>
 	</div>
 </div>
-<div id="profile-content">test
+<div id="profile-content">
 </div>

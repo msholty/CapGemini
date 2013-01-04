@@ -85,9 +85,10 @@ class Application_Form_Project extends Zend_Form
 				array(
 						'class' => 'pill-btn black-btn',
 						'name' => 'Save',
-						'type' => 'submit'
-				))
-			   ->setLabel('Next');
+						'type' => 'submit',
+						'label' => $options['submitLabel']
+				));
+			   //->setLabel($options['submitLabel']);
 
 		//Add all the elements to the form
 		$this->addElements(

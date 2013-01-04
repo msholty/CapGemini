@@ -131,7 +131,7 @@ $(function() {
 	$('#profile-ajax-skills').click(function(e) {
 		loadAjax('resources', 'ajax-skills', 'profile-content');
 	});
-	$('#project-ajax-more-information').click(function(e) {
+	$('#profile-ajax-more-information').click(function(e) {
 		loadAjax('resources', 'ajax-more-information', 'profile-content');
 	});
 });
@@ -167,7 +167,8 @@ function loadAjax(controller, action, content) {
 				document.getElementById(content).innerHTML = data;
 			},
 			error : function(data) {
-				alert('There was an error sending your request.');
+				alert('http://' + window.location.host + extra + '/' + controller
+						+ '/' + action + '/');
 			}
 		});
 	});

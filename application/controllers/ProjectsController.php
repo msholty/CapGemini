@@ -144,15 +144,18 @@ class ProjectsController extends Zend_Controller_Action
 		}
 
 		$formData = array(
-				'name' => $updateProject->name,
-				'code' => $updateProject->code,
-				'accountable' => $updateProject->accountable,
-				'responsible' => $updateProject->responsible,
-				'etc_keeper' => $updateProject->etc_keeper,
-				'expense_approver' => $updateProject->expense_approver,
-				'status' => $updateProject->status,
-				'phase' => $updateProject->phase
+				'name' => $project->name,
+				'code' => $project->code,
+				'accountable' => $project->accountable->_id,
+				'responsible' => $project->responsible->_id,
+				'etc_keeper' => $project->etc_keeper->_id,
+				'expense_approver' => $project->expense_approver->_id,
+				'status' => $project->status->_id,
+				'phase' => $project->phase->_id
 		);
+
+		//var_dump($formData);
+
 		$form->populate($formData);
 		$this->view->form = $form;
 	}

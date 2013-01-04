@@ -20,6 +20,18 @@ class ResourcesController extends Zend_Controller_Action
 		// Store the resources in the view so it can render them with partials
 		$this->view->resources = $resources;
 		foreach($resources as $resource) {
+
+			/*$resource->email = new Shanty_Mongo_Document();
+			$resource->email->capgemini = 'null@capgemini.com';
+			$resource->email->disney = 'null@disney.com';*/
+			/*if($resource->email_capgemini) {
+				$resource->email->capgemini = $resource->email_capgemini;
+				$resource->email->disney = $resource->email_disney;
+				$resource->email_capgemini = null;
+				$resource->email_disney = null;
+			}
+			*/
+			$resource->save();
 			$array[] = $resource;
 		}
 		$paginator = Zend_Paginator::factory($array);
@@ -34,7 +46,7 @@ class ResourcesController extends Zend_Controller_Action
 		$form = new Application_Form_Resource(
 				array(
 						'action' => $this->view->baseUrl('/resources/new/'),
-						'submitLabel' => 'Save'
+						'submitLabel' => 'Next'
 				));
 
 		//Check to see if the new project was submited
@@ -138,6 +150,14 @@ class ResourcesController extends Zend_Controller_Action
 	public function ajaxContactInformationAction() {
 		$this->_helper->layout->disableLayout();
 		$data = $this->_request->getPost();
+		$resource = Application_Model_Document_Resource::find($data['projectID']);
+		$this->view->resource = $resource;
+	}
+
+	public function ajaxMoreInformationAction() {
+		$this->_helper->layout->disableLayout();
+		$data = $this->_request->getPost();
+		//var_dump($resource);
 		$resource = Application_Model_Document_Resource::find($data['projectID']);
 		$this->view->resource = $resource;
 	}
