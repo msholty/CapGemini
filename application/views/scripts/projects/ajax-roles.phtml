@@ -1,30 +1,31 @@
 <div>
-	<h1>Responsible:</h1>
+	<h1>Role Title 1:</h1>
 	<h2>
 		<a
 			href="<?php echo $this->baseUrl('/resources/view/id/'.$this->project->responsible->_id) ?>">
 			<?php echo $this->project->responsible->name->first . ' ' . $this->project->responsible->name->last?>
 		</a>
 	</h2>
-	<h1>Accountable:</h1>
+	<h1>Role Title 2:</h1>
 	<h2>
 		<a
 			href="<?php echo $this->baseUrl('/resources/view/id/'.$this->project->accountable->_id) ?>">
 			<?php echo $this->project->accountable->name->first . ' ' . $this->project->accountable->name->last?>
 		</a>
 	</h2>
-	<h1>ETC Keeper:</h1>
+	<h1>Role Title 3:</h1>
 	<h2>
 		<a
 			href="<?php echo $this->baseUrl('/resources/view/id/'.$this->project->etc_keeper->_id) ?>">
 			<?php echo $this->project->etc_keeper->name->first . ' ' . $this->project->etc_keeper->name->last?>
 		</a>
 	</h2>
-	<h1>Expense Approver:</h1>
+	<h1>Role Title 4:</h1>
 	<h2>
 		<a
 			href="<?php echo $this->baseUrl('/resources/view/id/'.$this->project->expense_approver->_id) ?>">
 			<?php echo $this->project->expense_approver->name->first . ' ' . $this->project->expense_approver->name->last?>
 		</a>
 	</h2>
+	<a href="<?php echo $this->baseUrl('/roles/new/id/'.$this->resource->_id) ?>" class="pill-btn black-btn">Add Role</a>
 </div>

@@ -115,7 +115,7 @@ $(function() {
 	$('#project-ajax-roles').click(function(e) {
 		loadAjax('projects', 'ajax-roles', 'project-content');
 	});
-	$('#proejct-ajax-budget').click(function(e) {
+	$('#project-ajax-budget').click(function(e) {
 		loadAjax('projects', 'ajax-budget', 'project-content');
 	});
 	$('#project-ajax-contracts').click(function(e) {

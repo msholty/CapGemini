@@ -64,7 +64,7 @@ class ProjectsController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($id == null || !intval($id)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect($this->baseUrl('/projects/'));
+			$this->_redirect($this->view->baseUrl('/projects/'));
 			exit();
 		}
 
@@ -104,7 +104,7 @@ class ProjectsController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($id == null || !intval($id)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect($this->baseUrl('/projects/'));
+			$this->_redirect($this->view->baseUrl('/projects/'));
 			exit();
 		}
 
@@ -113,7 +113,7 @@ class ProjectsController extends Zend_Controller_Action
 
 		// Define the form
 		$form = new Application_Form_Project(array(
-				'action' => '/projects/edit/id/'.$id,
+				'action' => $this->view->baseUrl('/projects/edit/id/'.$id),
 				'submitLabel' => 'Update'
 		));
 
@@ -126,16 +126,16 @@ class ProjectsController extends Zend_Controller_Action
 				// Assign all the form values to our updateProject to save
 				$project->name = $formData['name'];
 				$project->code = $formData['code'];
-				$project->accountable = $formData['accountable'];
-				$project->responsible = $formData['responsible'];
-				$project->etc_keeper = $formData['etc_keeper'];
-				$project->expense_approver = $formData['expense_approver'];
-				$project->phase = $formData['phase'];
-				$project->status = $formData['status'];
+				$project->accountable = Application_Model_Document_Resource::find($formData['accountable']);
+				$project->responsible = Application_Model_Document_Resource::find($formData['responsible']);
+				$project->etc_keeper = Application_Model_Document_Resource::find($formData['etc_keeper']);
+				$project->expense_approver = Application_Model_Document_Resource::find($formData['expense_approver']);
+				$project->phase = Application_Model_Document_ProjectPhase::find($formData['phase']);
+				$project->status = Application_Model_Document_ProjectStatus::find($formData['status']);
 				// Save the project
 				$project->save();
 				// Redirect to the view of the project
-				$this->_redirect($this->baseUrl('/projects/view/id/'.$id));
+				$this->_redirect($this->view->baseUrl('/projects/view/id/'.$id));
 				exit();
 			}
 			else {
@@ -154,8 +154,6 @@ class ProjectsController extends Zend_Controller_Action
 				'phase' => $project->phase->_id
 		);
 
-		//var_dump($formData);
-
 		$form->populate($formData);
 		$this->view->form = $form;
 	}
@@ -167,13 +165,13 @@ class ProjectsController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($pid == null || !intval($pid)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect($this->baseUrl('/projects/'));
+			$this->_redirect($this->view->baseUrl('/projects/'));
 			exit();
 		}
 
 		$project = Application_Model_Document_Project::find($pid);
 		$project->sow->delete();
-		$this->_redirect($this->baseUrl('/projects/'));
+		$this->_redirect($this->view->baseUrl('/projects/'));
 	}
 
 	public function ajaxPeopleAction() {
@@ -210,6 +208,20 @@ class ProjectsController extends Zend_Controller_Action
 
 		$this->view->end_date = $final_end_date;
 		$this->view->change_orders = $change_orders;
+	}
+
+	public function ajaxRolesAction() {
+		$this->_helper->layout->disableLayout();
+		$data = $this->_request->getPost();
+		$project = Application_Model_Document_Project::find($data['projectID']);
+		$this->view->project = $project;
+	}
+
+	public function ajaxBudgetAction() {
+		$this->_helper->layout->disableLayout();
+		$data = $this->_request->getPost();
+		$project = Application_Model_Document_Project::find($data['projectID']);
+		$this->view->project = $project;
 	}
 }
 
