@@ -27,5 +27,5 @@
 			<?php echo $this->project->expense_approver->name->first . ' ' . $this->project->expense_approver->name->last?>
 		</a>
 	</h2>
-	<a href="<?php echo $this->baseUrl('/roles/new/id/'.$this->resource->_id) ?>" class="pill-btn black-btn">Add Role</a>
+	<a href="<?php echo $this->baseUrl('/roles/new/pid/'.$this->project->_id) ?>" class="pill-btn black-btn">Add Role</a>
 </div>

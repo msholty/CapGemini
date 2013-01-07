@@ -3,7 +3,6 @@
   <projectDirectory>
     <projectProfileFile filesystemName=".zfproject.xml"/>
     <applicationDirectory classNamePrefix="Application_">
-      <apisDirectory enabled="false"/>
       <configsDirectory>
         <applicationConfigFile type="ini"/>
       </configsDirectory>
@@ -49,6 +48,9 @@
           <actionMethod actionName="edit"/>
         </controllerFile>
         <controllerFile controllerName="Reports">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Admin">
           <actionMethod actionName="index"/>
         </controllerFile>
       </controllersDirectory>
@@ -112,13 +114,6 @@
         </moduleDirectory>
       </modulesDirectory>
       <servicesDirectory enabled="false"/>
-        </controllerFile>
-        <controllerFile controllerName="Error"/>
-      </controllersDirectory>
-      <formsDirectory enabled="false"/>
-      <layoutsDirectory enabled="false"/>
-      <modelsDirectory/>
-      <modulesDirectory enabled="false"/>
       <viewsDirectory>
         <viewScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
@@ -205,6 +200,9 @@
           <viewControllerScriptsDirectory forControllerName="Reports">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
@@ -281,6 +279,9 @@
           <testApplicationControllerFile forControllerName="Reports">
             <testApplicationActionMethod forActionName="index"/>
           </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Admin">
+            <testApplicationActionMethod forActionName="index"/>
+          </testApplicationControllerFile>
         </testApplicationControllerDirectory>
         <testApplicationModulesDirectory>
           <testApplicationModuleDirectory forModuleName="projects">
@@ -293,12 +294,6 @@
         </testApplicationModulesDirectory>
       </testApplicationDirectory>
       <testLibraryDirectory/>
-      <testApplicationDirectory>
-        <testApplicationBootstrapFile filesystemName="bootstrap.php"/>
-      </testApplicationDirectory>
-      <testLibraryDirectory>
-        <testLibraryBootstrapFile filesystemName="bootstrap.php"/>
-      </testLibraryDirectory>
     </testsDirectory>
   </projectDirectory>
 </projectProfile>
