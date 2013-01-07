@@ -20,21 +20,7 @@ class ResourcesController extends Zend_Controller_Action
 		// Store the resources in the view so it can render them with partials
 		$this->view->resources = $resources;
 		foreach($resources as $resource) {
-			if($resource->level == '') {
-				//$resource->title = new Shanty_Mongo_Document();
-				//$resource->title = Application_Model_Document_ResourceTitle::find('508ededd68a7fdad04000005');
-			}
-			/*$resource->email = new Shanty_Mongo_Document();
-			$resource->email->capgemini = 'null@capgemini.com';
-			$resource->email->disney = 'null@disney.com';*/
-			/*if($resource->email_capgemini) {
-				$resource->email->capgemini = $resource->email_capgemini;
-				$resource->email->disney = $resource->email_disney;
-				$resource->email_capgemini = null;
-				$resource->email_disney = null;
-			}
-			*/
-			$resource->save();
+			//$resource->save();
 			$array[] = $resource;
 		}
 		$paginator = Zend_Paginator::factory($array);
@@ -124,8 +110,9 @@ class ResourcesController extends Zend_Controller_Action
 				$resource->resource_type= Application_Model_Document_ResourceType::find($form->getValue('resource_type'));
 				$resource->title = Application_Model_Document_ResourceTitle::find($form->getValue('title'));
 				$resource->save();
-				// Redirect to the view of the project
-				$this->_redirect($this->view->baseUrl('/resources/view/id/'.$id));
+				// Redirect to the resource profile
+				//$this->_redirect($this->view->baseUrl('/resources/view/id/'.$id));
+				$this->_redirect('/resources/view/id/'.$id);
 				exit();
 			}
 			else {
