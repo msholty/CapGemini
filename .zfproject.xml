@@ -1,23 +1,19 @@
 <?xml version="1.0"?>
-<<<<<<< HEAD
 <projectProfile type="default" version="1.12.0">
   <projectDirectory>
     <projectProfileFile filesystemName=".zfproject.xml"/>
     <applicationDirectory classNamePrefix="Application_">
-=======
 <projectProfile type="default" version="1.10">
   <projectDirectory>
     <projectProfileFile filesystemName=".zfproject.xml"/>
     <applicationDirectory classNamePrefix="Application_">
       <apisDirectory enabled="false"/>
->>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
       <configsDirectory>
         <applicationConfigFile type="ini"/>
       </configsDirectory>
       <controllersDirectory>
         <controllerFile controllerName="Index">
           <actionMethod actionName="index"/>
-<<<<<<< HEAD
           <actionMethod actionName="new"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
@@ -120,7 +116,6 @@
         </moduleDirectory>
       </modulesDirectory>
       <servicesDirectory enabled="false"/>
-=======
         </controllerFile>
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
@@ -128,7 +123,6 @@
       <layoutsDirectory enabled="false"/>
       <modelsDirectory/>
       <modulesDirectory enabled="false"/>
->>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
       <viewsDirectory>
         <viewScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
@@ -137,7 +131,6 @@
           <viewControllerScriptsDirectory forControllerName="Error">
             <viewScriptFile forActionName="error"/>
           </viewControllerScriptsDirectory>
-<<<<<<< HEAD
           <viewControllerScriptsDirectory forControllerName="Projects">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
@@ -216,8 +209,6 @@
           <viewControllerScriptsDirectory forControllerName="Reports">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
-=======
->>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
@@ -249,7 +240,6 @@
     <temporaryDirectory enabled="false"/>
     <testsDirectory>
       <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
-<<<<<<< HEAD
       <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
       <testApplicationDirectory>
         <testApplicationControllerDirectory>
@@ -307,14 +297,12 @@
         </testApplicationModulesDirectory>
       </testApplicationDirectory>
       <testLibraryDirectory/>
-=======
       <testApplicationDirectory>
         <testApplicationBootstrapFile filesystemName="bootstrap.php"/>
       </testApplicationDirectory>
       <testLibraryDirectory>
         <testLibraryBootstrapFile filesystemName="bootstrap.php"/>
       </testLibraryDirectory>
->>>>>>> 5ac6f6a6818e4e45455749afe3e318b4ad33031e
     </testsDirectory>
   </projectDirectory>
 </projectProfile>
