@@ -128,6 +128,7 @@ class ResourcesController extends Zend_Controller_Action
 				'email' => $resource->email->capgemini,
 				'resource_type' => $resource->resource_type->_id,
 				'title' => $resource->title->_id
+				//'office_base' => $resource->office_base->_id
 		);
 		$form->populate($formData);
 		$this->view->form = $form;

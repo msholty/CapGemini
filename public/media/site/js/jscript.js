@@ -3,7 +3,7 @@
  */
 var myWindow;
 var extra = '/capfire';
-//extra = '';
+extra = '';
 
 function lookup(w, h, textbox_id, type) {
 	var left = (screen.width / 2) - (w / 2);
@@ -135,14 +135,48 @@ $(function() {
 	$('#profile-ajax-more-information').click(function(e) {
 		loadAjax('resources', 'ajax-more-information', 'profile-content');
 	});
+
+	// Admin tabs
+	$('#admin-ajax-billing-types').click(function(e) {
+		loadAjax('admin', 'ajax-billing-types', 'admin-content');
+	});
+	$('#admin-ajax-contract-types').click(function(e) {
+		loadAjax('admin', 'ajax-contract-types', 'admin-content');
+	});
+	$('#admin-ajax-project-phases').click(function(e) {
+		loadAjax('admin', 'ajax-project-phases', 'admin-content');
+	});
+	$('#admin-ajax-project-roles').click(function(e) {
+		loadAjax('admin', 'ajax-project-roles', 'admin-content');
+	});
+	$('#admin-ajax-project-status').click(function(e) {
+		loadAjax('admin', 'ajax-project-status', 'admin-content');
+	});
+	$('#admin-ajax-resource-titles').click(function(e) {
+		loadAjax('admin', 'ajax-resource-titles', 'admin-content');
+	});
+	$('#admin-ajax-resource-types').click(function(e) {
+		loadAjax('admin', 'ajax-resource-types', 'admin-content');
+	});
+	$('#admin-ajax-office-bases').click(function(e) {
+		loadAjax('admin', 'ajax-office-bases', 'admin-content');
+	});
+	$('#admin-ajax-skills').click(function(e) {
+		loadAjax('admin', 'ajax-skills', 'admin-content');
+	});
+	$('#admin-ajax-skill-ratings').click(function(e) {
+		loadAjax('admin', 'ajax-skill-ratings', 'admin-content');
+	});
 });
 
 function loadAjax(controller, action, content) {
 	$(function() {
 		document.getElementById(content).innerHTML = '<div id="ajax-container"><img id="ajax" src="https://s3.amazonaws.com/Capgemini/Avatars/ajax-loader.gif"/></div>';
+
 		// get id of project
 		var location = window.location.toString();
 		var split = location.split('/');
+		var id = '';
 
 		split.forEach(function(value, index, array) {
 			if (value == 'id') {
@@ -150,10 +184,8 @@ function loadAjax(controller, action, content) {
 			}
 		});
 
-		var projectID = id;
-
 		if (id.indexOf('#') >= 0) {
-			projectID = id.substr(0, id.indexOf('#'));
+			id = id.substr(0, id.indexOf('#'));
 		}
 
 		$.ajax({
@@ -162,16 +194,16 @@ function loadAjax(controller, action, content) {
 					+ '/' + action + '/',
 			async : true,
 			data : {
-				projectID : projectID
+				projectID : id
 			},
 			success : function(data) {
 				document.getElementById(content).innerHTML = data;
-				//alert('http://' + window.location.host + extra + '/' + controller
-					//+ '/' + action + '/');
 			},
 			error : function(data) {
-				alert('http://' + window.location.host + extra + '/' + controller
-						+ '/' + action + '/');
+				/*alert('failure: http://' + window.location.host + extra + '/' + controller
+						+ '/' + action + '/');*/
+				document.getElementById(content).innerHTML = 'Error: http://' + window.location.host + extra + '/' + controller
+				+ '/' + action + '/';
 			}
 		});
 	});

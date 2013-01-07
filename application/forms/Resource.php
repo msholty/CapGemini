@@ -5,7 +5,6 @@ class Application_Form_Resource extends Zend_Form
     /* Options can contain
      * $options['submitLabel'] -> label for the button
      * $options['action'] -> target for the form
-     * $options['resource'] -> resource to auto-populate things
      */
 
     public function __construct($options = null) {
@@ -51,8 +50,7 @@ class Application_Form_Resource extends Zend_Form
         $resource_type = new Zend_Form_Element_Select('resource_type');
         $resource_type
         	->setAttrib('name', 'resource_type')
-			->setAttrib('required', 'true')
-			->setAttrib('placeholder', 'Resource Type');
+			->setAttrib('required', 'true');
 
         foreach (Application_Model_Document_ResourceType::all() as $c) {
         	$resource_type->addMultiOption($c->_id, $c->value);
@@ -60,18 +58,26 @@ class Application_Form_Resource extends Zend_Form
 
         $title = new Zend_Form_Element_Select('title');
         $title->setAttrib('name', 'resource_type')
-        	  ->setAttrib('required', 'true')
-              ->setAttrib('placeholder', 'Title');
+        	  ->setAttrib('required', 'true');
 
         foreach (Application_Model_Document_ResourceTitle::all() as $c) {
         	$title->addMultiOption($c->_id, $c->value);
+        }
+
+        $office_base = new Zend_Form_Element_Select('office_base');
+        $office_base->setAttrib('name', 'office_base')
+        	->setAttrib('required', 'true');
+        //$office_base->addMultiOption('test', 'test_text');
+
+        foreach (Application_Model_Document_OfficeBase::all() as $office) {
+        	$office_base->addMultiOption($office->_id, $office->city . ', ' . $office->state . ', ' . $office->country);
         }
 
         // Submit button
         $submit = new Zend_Form_Element_Button(
                 'save',
                 array(
-                        'name' => 'Save',
+                        'name' => $options['submitLabel'],
                         'type' => 'submit',
                         'class' => 'pill-btn black-btn'
                 )
@@ -87,6 +93,7 @@ class Application_Form_Resource extends Zend_Form
             		$email,
             		$resource_type,
             		$title,
+            		$office,
                     $submit
             )
         );
