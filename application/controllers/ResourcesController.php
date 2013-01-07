@@ -69,7 +69,7 @@ class ResourcesController extends Zend_Controller_Action
 				$resource->save();
 
 				//Redirect to project's view screen /people/view/:id
-				$this->_redirect('/resources/view/id/'.$id);
+				$this->_redirect($this->view->baseUrl('/resources/view/id/'.$id));
 			}
 		}
 
@@ -83,7 +83,7 @@ class ResourcesController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($id == null || !intval($id)) {
 			// Redirect because to view a Resource, they have to specify one in the url
-			$this->_redirect('/resources/');
+			$this->_redirect($this->view->baseUrl('/resources/'));
 			exit();
 		}
 
@@ -98,7 +98,7 @@ class ResourcesController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($id == null || !intval($id)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect('/resources/');
+			$this->_redirect($this->view->baseUrl('/resources/'));
 			exit();
 		}
 
@@ -107,7 +107,7 @@ class ResourcesController extends Zend_Controller_Action
 		// Define the form
 		$form = new Application_Form_Resource(
 				array(
-						'action' => '/resources/edit/id/'.$id,
+						'action' => $this->view->baseUrl('/resources/edit/id/'.$id),
 						'submitLabel' => 'Update'
 		));
 
