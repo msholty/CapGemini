@@ -50,7 +50,7 @@ class ProjectsController extends Zend_Controller_Action
 				$project->save();
 
 				//Redirect to project's view screen /contracts/new/pid/:id
-				$this->_redirect('/contracts/new/pid/'.$project->_id);
+				$this->_redirect($this->view->baseUrl('/contracts/new/pid/'.$project->_id));
 			}
 		}
 
@@ -64,7 +64,7 @@ class ProjectsController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($id == null || !intval($id)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect('/projects/');
+			$this->_redirect($this->baseUrl('/projects/'));
 			exit();
 		}
 
@@ -104,7 +104,7 @@ class ProjectsController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($id == null || !intval($id)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect('/projects/');
+			$this->_redirect($this->baseUrl('/projects/'));
 			exit();
 		}
 
@@ -135,7 +135,7 @@ class ProjectsController extends Zend_Controller_Action
 				// Save the project
 				$project->save();
 				// Redirect to the view of the project
-				$this->_redirect('/projects/view/id/'.$id);
+				$this->_redirect($this->baseUrl('/projects/view/id/'.$id));
 				exit();
 			}
 			else {
@@ -167,13 +167,13 @@ class ProjectsController extends Zend_Controller_Action
 		// Check to see if they specified id in the url and its a valid id
 		if($pid == null || !intval($pid)) {
 			// Redirect because to view a project, they have to specify one in the url
-			$this->_redirect('/projects/');
+			$this->_redirect($this->baseUrl('/projects/'));
 			exit();
 		}
 
 		$project = Application_Model_Document_Project::find($pid);
 		$project->sow->delete();
-		$this->_redirect('/projects/');
+		$this->_redirect($this->baseUrl('/projects/'));
 	}
 
 	public function ajaxPeopleAction() {

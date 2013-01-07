@@ -55,7 +55,7 @@ class ContractsController extends Zend_Controller_Action
 				$project->save();
 
         		//Redirect to project's view screen /projects/view/id/:id
-        		$this->_redirect('/projects/view/id/'.$pid);
+        		$this->_redirect($this->baseUrl('/projects/view/id/'.$pid));
         	}
         }
 
@@ -70,7 +70,7 @@ class ContractsController extends Zend_Controller_Action
         // Check to see if they specified id in the url and its a valid id
         if($id == null || !intval($id)) {
             // Redirect because to view a project, they have to specify one in the url
-            $this->_redirect('/projects/');
+            $this->_redirect($this->baseUrl('/projects/'));
             exit();
         }
 

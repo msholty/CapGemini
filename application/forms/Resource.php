@@ -5,6 +5,7 @@ class Application_Form_Resource extends Zend_Form
     /* Options can contain
      * $options['submitLabel'] -> label for the button
      * $options['action'] -> target for the form
+     * $options['resource'] -> resource to auto-populate things
      */
 
     public function __construct($options = null) {
@@ -33,13 +34,6 @@ class Application_Form_Resource extends Zend_Form
 	        ->setAttrib('required', 'true')
 	        ->setAttrib('placeholder', 'Last Name');
 
-        // Resource Last Name field
-        $email = new Zend_Form_Element_Text('last_name');
-        $email
-        	->setAttrib('name', 'phone_number')
-        	->setAttrib('required', 'true')
-			->setAttrib('placeholder', 'Phone Number');
-
         // Resource Phone Number field (text)
         $phone_number = new Zend_Form_Element_Text('phone_number');
         $phone_number
@@ -47,10 +41,10 @@ class Application_Form_Resource extends Zend_Form
 			->setAttrib('required', 'true')
         	->setAttrib('placeholder', 'Phone Number');
 
-        // Resource Phone Number field (text)
+        // Resource Email Number field (text)
         $email = new Zend_Form_Element_Text('email');
         $email
-        	->setAttrib('name', 'resource_type')
+        	->setAttrib('name', 'email')
         	->setAttrib('required', 'true')
         	->setAttrib('placeholder', 'Email');
 

@@ -20,7 +20,10 @@ class ResourcesController extends Zend_Controller_Action
 		// Store the resources in the view so it can render them with partials
 		$this->view->resources = $resources;
 		foreach($resources as $resource) {
-
+			if($resource->level == '') {
+				//$resource->title = new Shanty_Mongo_Document();
+				//$resource->title = Application_Model_Document_ResourceTitle::find('508ededd68a7fdad04000005');
+			}
 			/*$resource->email = new Shanty_Mongo_Document();
 			$resource->email->capgemini = 'null@capgemini.com';
 			$resource->email->disney = 'null@disney.com';*/
@@ -99,13 +102,14 @@ class ResourcesController extends Zend_Controller_Action
 			exit();
 		}
 
-		// Define the form
-		$form = new Application_Form_Resource(array(
-				'action' => '/resources/edit/id/'.$id,
-				'submitLabel' => 'Update'
-		));
-
 		$resource = Application_Model_Document_Resource::find($id);
+
+		// Define the form
+		$form = new Application_Form_Resource(
+				array(
+						'action' => '/resources/edit/id/'.$id,
+						'submitLabel' => 'Update'
+		));
 
 		//Check to see if the user has submited the form or just requesting it
 		if ($this->_request->getPost()) { // Form is submited, now we populate proper database object to reflect changes
@@ -115,13 +119,13 @@ class ResourcesController extends Zend_Controller_Action
 				$resource->name->first = $form->getValue('first_name');
 				$resource->name->middle = $form->getValue('middle_name');
 				$resource->name->last = $form->getValue('last_name');
-				$resource->phone_number = $form->getValue('phone_number');
-				$resource->email = $form->getValue('email');
+				$resource->phone->capgemini = $form->getValue('phone_number');
+				$resource->email->capgemini = $form->getValue('email');
 				$resource->resource_type= Application_Model_Document_ResourceType::find($form->getValue('resource_type'));
 				$resource->title = Application_Model_Document_ResourceTitle::find($form->getValue('title'));
 				$resource->save();
 				// Redirect to the view of the project
-				$this->_redirect('/resources/view/id/'.$id);
+				$this->_redirect($this->view->baseUrl('/resources/view/id/'.$id));
 				exit();
 			}
 			else {
@@ -134,9 +138,9 @@ class ResourcesController extends Zend_Controller_Action
 				'middle_name' => $resource->name->middle,
 				'last_name' => $resource->name->last,
 				'phone_number' => $resource->phone_number,
-				'email' => $resource->email,
-				'resource_type' => $resource->resource_type->value,
-				'title' => $resource->title->value
+				'email' => $resource->email->capgemini,
+				'resource_type' => $resource->resource_type->_id,
+				'title' => $resource->title->_id
 		);
 		$form->populate($formData);
 		$this->view->form = $form;
