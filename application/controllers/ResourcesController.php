@@ -107,6 +107,16 @@ class ResourcesController extends Zend_Controller_Action
 				$resource->name->last = $form->getValue('last_name');
 				$resource->phone->capgemini = $form->getValue('phone_number');
 				$resource->email->capgemini = $form->getValue('email');
+
+				$resource->address = new Shanty_Mongo_Document();
+				$resource->address->line1 = $form->getValue('address1');
+				$resource->address->line2 = $form->getValue('address2');
+				$resource->address->city = $form->getValue('city');
+				$resource->address->state = $form->getValue('state');
+				$resource->address->country = $form->getValue('country');
+
+				$resource->office_base = Application_Model_Document_OfficeBase::find($form->getValue('office_base'));
+
 				$resource->resource_type= Application_Model_Document_ResourceType::find($form->getValue('resource_type'));
 				$resource->title = Application_Model_Document_ResourceTitle::find($form->getValue('title'));
 				$resource->save();
@@ -127,8 +137,13 @@ class ResourcesController extends Zend_Controller_Action
 				'phone_number' => $resource->phone_number,
 				'email' => $resource->email->capgemini,
 				'resource_type' => $resource->resource_type->_id,
-				'title' => $resource->title->_id
-				//'office_base' => $resource->office_base->_id
+				'title' => $resource->title->_id,
+				'address1' => $resource->address->line1,
+				'address2' => $resource->address->line2,
+				'city' => $resource->address->city,
+				'state' => $resource->address->state,
+				'country' => $resource->address->country,
+				'office_base' => $resource->office_base->_id
 		);
 		$form->populate($formData);
 		$this->view->form = $form;

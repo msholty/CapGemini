@@ -1,9 +1,17 @@
 <h1>Office Base:</h1>
-<h2><?php echo $this->resource->office_base ?></h2>
+<h2><?php echo $this->resource->office_base->city .
+', ' .
+$this->resource->office_base->state .
+', ' .
+$this->resource->office_base->country ?></h2>
 <h1>Capgemini Email:</h1>
 <h2><?php echo $this->resource->email->capgemini ?></h2>
 <h1>Personal Address/Home base:</h1>
-<h2><?php echo $this->resource->address?></h2>
+<h2><?php echo $this->resource->address->line1 . '<br>' .
+$this->resource->address->line2 . '<br>' .
+$this->resource->address->city . '<br>' .
+$this->resource->address->state . '<br>' .
+$this->resource->address->country ?></h2>
 <h1>1+7:</h1>
 <h2><?php echo $this->resource->username;?></h2>
 <h1>Resource Type:</h1>

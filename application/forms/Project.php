@@ -88,7 +88,6 @@ class Application_Form_Project extends Zend_Form
 						'type' => 'submit',
 						'label' => $options['submitLabel']
 				));
-			   //->setLabel($options['submitLabel']);
 
 		//Add all the elements to the form
 		$this->addElements(

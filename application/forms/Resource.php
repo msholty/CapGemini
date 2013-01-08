@@ -9,9 +9,12 @@ class Application_Form_Resource extends Zend_Form
 
     public function __construct($options = null) {
         parent::__construct($options);
-        $this
-        	->setAction($options['action']) //Action is a passed in option
-            ->setMethod('post'); //Form is a POST form
+
+        $this->setAction($options['action'])    //Action is a passed in option
+        ->setMethod('post')                //Form is a POST form
+        ->setDecorators(array(
+        		array('ViewScript', array('viewScript' => 'form/resource.phtml'))
+        ));
 
         // Resource First Name field
         $first_name = new Zend_Form_Element_Text('first_name');
@@ -57,31 +60,43 @@ class Application_Form_Resource extends Zend_Form
         }
 
         $title = new Zend_Form_Element_Select('title');
-        $title->setAttrib('name', 'resource_type')
-        	  ->setAttrib('required', 'true');
+        $title
+        	->setAttrib('name', 'resource_type')
+        	->setAttrib('required', 'true');
 
         foreach (Application_Model_Document_ResourceTitle::all() as $c) {
         	$title->addMultiOption($c->_id, $c->value);
         }
 
         $office_base = new Zend_Form_Element_Select('office_base');
-        $office_base->setAttrib('name', 'office_base')
+        $office_base
+        	->setAttrib('name', 'office_base')
         	->setAttrib('required', 'true');
-        //$office_base->addMultiOption('test', 'test_text');
 
         foreach (Application_Model_Document_OfficeBase::all() as $office) {
         	$office_base->addMultiOption($office->_id, $office->city . ', ' . $office->state . ', ' . $office->country);
         }
 
         // Submit button
-        $submit = new Zend_Form_Element_Button(
-                'save',
-                array(
-                        'name' => $options['submitLabel'],
-                        'type' => 'submit',
-                        'class' => 'pill-btn black-btn'
-                )
-        );
+        $submit = new Zend_Form_Element_Button('submit');
+        $submit->setAttribs(
+        		array(
+        				'class' => 'pill-btn black-btn',
+        				'name' => 'Save',
+        				'type' => 'submit',
+        				'label' => $options['submitLabel']
+        		));
+
+        $address1 = new Zend_Form_Element_Text('address1');
+        $address1->setAttrib('placeholder', 'Address Line 1');
+        $address2 = new Zend_Form_Element_Text('address2');
+        $address2->setAttrib('placeholder', 'Address Line 2');
+        $city = new Zend_Form_Element_Text('city');
+        $city->setAttrib('placeholder', 'City');
+        $state = new Zend_Form_Element_Text('state');
+        $state->setAttrib('placeholder', 'State');
+        $country = new Zend_Form_Element_Text('country');
+        $country->setAttrib('placeholder', 'Country');
 
         //Add all the elements to the form
         $this->addElements(
@@ -93,7 +108,12 @@ class Application_Form_Resource extends Zend_Form
             		$email,
             		$resource_type,
             		$title,
-            		$office,
+            		$office_base,
+            		$address1,
+            		$address2,
+            		$city,
+            		$state,
+            		$country,
                     $submit
             )
         );

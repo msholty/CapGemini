@@ -1,0 +1,29 @@
+<form
+	action="<?php echo $this->escape( $this->element->getAction() ) ?>"
+	method="<?php echo $this->escape( $this->element->getMethod() ) ?>" >
+	<fieldset>
+		<h3><legend>General Information</legend></h3>
+		<?php echo $this->element->first_name ?>
+		<?php echo $this->element->middle_name ?>
+		<?php echo $this->element->last_name ?>
+		<?php echo $this->element->resource_type ?>
+		<?php echo $this->element->title ?>
+	</fieldset>
+	<fieldset>
+		<h3><legend>Contact Information</legend></h3>
+		<?php echo $this->element->address1 ?>
+		<?php echo $this->element->address2 ?>
+		<?php echo $this->element->city ?>
+		<?php echo $this->element->state ?>
+		<?php echo $this->element->country ?>
+		<?php echo $this->element->office_base ?>
+		<?php echo $this->element->email ?>
+		<?php echo $this->element->phone_number ?>
+	</fieldset>
+	<fieldset>
+		<h3><legend>Project Details</legend></h3>
+		<?php echo $this->element->phase ?>
+		<?php echo $this->element->status ?>
+	</fieldset>
+	<button type="submit" value="next" class="pill-btn black-btn"><?php echo $this->element->submit->label;?></button>
+</form>
