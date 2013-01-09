@@ -20,7 +20,6 @@ class ResourcesController extends Zend_Controller_Action
 		// Store the resources in the view so it can render them with partials
 		$this->view->resources = $resources;
 		foreach($resources as $resource) {
-			//$resource->save();
 			$array[] = $resource;
 		}
 		$paginator = Zend_Paginator::factory($array);

@@ -31,10 +31,10 @@ class Application_View_Helper_ProfileCard extends Zend_View_Helper_Abstract
 							<div class="secondary">{$resource->resource_type->value}</div>
 						</li>
 						<li>Location
-							<div class="secondary">{$resource->office_base}</div>
+							<div class="secondary">{$resource->office_base->city}</div>
 						</li>
 						<li>Email
-							<div class="secondary">{$resource->office_base}</div>
+							<div class="secondary">{$resource->office_base->city}</div>
 						</li>
 					</ul>
 				</div>

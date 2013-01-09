@@ -1,8 +1,5 @@
 <?php
-
-class Application_Form_Contract extends Zend_Form
-{
-
+class Application_Form_Contract extends Zend_Form {
 	public function __construct($options = null) {
 		parent::__construct($options);
 

@@ -27,10 +27,12 @@ class ProjectsController extends Zend_Controller_Action
 
 	public function newAction()
 	{
-		$form = new Application_Form_Project(array(
-				'action' => $this->view->baseUrl('/projects/new/'),
-				'submitLabel' => 'Save'
-		));
+		$form = new Application_Form_Project(
+				array(
+						'action' => $this->view->baseUrl('/projects/new/'),
+						'submitLabel' => 'Save'
+				)
+		);
 
 		//Check to see if the new project was submited
 		if ($this->_request->getPost()) {

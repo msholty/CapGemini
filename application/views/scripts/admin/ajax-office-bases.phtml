@@ -1,4 +1,8 @@
-<?php foreach($this->office_bases as $office_base): ?>
-<h1><?php echo $office_base->city . ', ' . $office_base->state . ', ' . $office_base->country?></h1>
+<?php foreach($this->objects as $office_base): ?>
+<h1>
+	<?php echo $office_base->city . ', ' . $office_base->state . ', ' . $office_base->country?>
+</h1>
 <?php endforeach; ?>
-<a href="" class="pill-btn black-btn">Add Office Base</a>
+<br>
+<h2>Enter a new office base:</h2>
+<?php echo $this->form; ?>

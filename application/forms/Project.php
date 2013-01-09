@@ -87,7 +87,8 @@ class Application_Form_Project extends Zend_Form
 						'name' => 'Save',
 						'type' => 'submit',
 						'label' => $options['submitLabel']
-				));
+				)
+		);
 
 		//Add all the elements to the form
 		$this->addElements(
