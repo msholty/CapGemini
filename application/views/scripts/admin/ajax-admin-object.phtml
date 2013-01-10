@@ -1,8 +1,14 @@
-<?php foreach($this->objects as $object): ?>
-<h1>
-	<ul>
-		<li><?php echo $object->value ?></li>
+<div class="multi-select-filter-menu">
+	<div class="header collapse-trigger">
+		Objects <a href="#" class="chevron-icon gray up tiny-vertical"></a>
+	</div>
+	<ul id="saved_routines" class="collapsible-content" style="">
+		<?php foreach($this->objects as $object): ?>
+		<li><a href="#" class="routine deletable" id="routine_13693400"> <?php echo $object->value ?>
+				<span id="delete_routine_13693400"
+				class="remove-link x-icon small gray delete_routine"></span>
+		</a></li>
+		<?php endforeach; ?>
 	</ul>
-</h1>
-<?php endforeach; ?>
-<?php echo $this->form; ?>
+	<?php echo $this->form; ?>
+</div>

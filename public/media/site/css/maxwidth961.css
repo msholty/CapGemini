@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+/* tablet landscape and below */
+@media ( max-width : 961px) {
+	#global-title-bar {
+		/*display: none;*/
+		width: 100%;
+		margin-left: 0;
+		background: #1DA6DA;
+		height: 40px;
+	}
+
+	#list-nav {
+		display: none;
+	}
+}

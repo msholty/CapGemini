@@ -1,26 +1,33 @@
 <header>
 	<nav id="global-title-bar">
+		<div id="toggle-stream">
+			<i class="icon-lists"></i>
+		</div>
 		<div style="white-space: nowrap;">
-			<ul>
+			<ul id="list-nav">
 				<li><a id="home"
 					class="feed-icon gray small actionable labeled-icon"
-					href="<?php echo $this->baseUrl() ?>/opportunities/">Opportunities</a></li>
+					href="<?php echo $this->baseUrl() ?>/opportunities/">Opportunities</a>
+				</li>
 				<li><a id="profile"
 					class="star-icon gray medium actionable labeled-icon "
-					href="<?php echo $this->baseUrl() ?>/projects/">Projects</a></li>
+					href="<?php echo $this->baseUrl() ?>/projects/">Projects</a>
+				</li>
 				<li><a id="track"
 					class="fito-icon gray small actionable labeled-icon "
-					href="<?php echo $this->baseUrl() ?>/financials/">Financials</a></li>
+					href="<?php echo $this->baseUrl() ?>/financials/">Financials</a>
+				</li>
 				<li><a id="nav_ldrbrd"
 					class="leaders-icon gray small actionable labeled-icon "
-					href="<?php echo $this->baseUrl() ?>/resources/">Resources</a></li>
+					href="<?php echo $this->baseUrl() ?>/resources/">Resources</a>
+				</li>
 				<li><a id="groups"
 					class="group-icon gray small actionable labeled-icon "
-					href="<?php echo $this->baseUrl() ?>/qa/">Q/A</a>
-				</li>
+					href="<?php echo $this->baseUrl() ?>/qa/">Q/A</a></li>
 				<li><a id="forum"
 					class="science-icon gray small actionable labeled-icon "
-					href="<?php echo $this->baseUrl() ?>/reports/">Reports</a></li>
+					href="<?php echo $this->baseUrl() ?>/reports/">Reports</a>
+				</li>
 			</ul>
 
 			<form id="nav_search" action="/global_search/" method="GET">
