@@ -1,15 +1,27 @@
 @CHARSET "UTF-8";
 /* tablet landscape and below */
 @media ( max-width : 961px) {
+	body {
+		margin: 0px;
+	}
+
 	#global-title-bar {
 		/*display: none;*/
 		width: 100%;
 		margin-left: 0;
-		background: #1DA6DA;
+		/*background: #1DA6DA;*/
 		height: 40px;
 	}
 
 	#list-nav {
 		display: none;
+	}
+
+	#nav_search {
+		display: none;
+	}
+
+	#small-logo {
+		display: hide;
 	}
 }
