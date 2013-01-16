@@ -4,24 +4,26 @@
 	body {
 		margin: 0px;
 	}
-
-	#global-title-bar {
-		/*display: none;*/
+	#global-title-bar { /*display: none;*/
 		width: 100%;
 		margin-left: 0;
 		/*background: #1DA6DA;*/
 		height: 40px;
 	}
-
 	#list-nav {
 		display: none;
 	}
-
 	#nav_search {
 		display: none;
 	}
-
 	#small-logo {
 		display: hide;
+	}
+	#toggle-stream {
+		display: block;
+		border-right: 1px solid #E1E1E1;
+	}
+	#global-title-bar {
+		border: 0px;
 	}
 }
